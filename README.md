@@ -1,7 +1,7 @@
-### Game Dev UWA First Jam
+# Game Dev UWA First Jam
 
 ## Quarantine
-# Team Members
-Josh
-Anisha
-Jerry
+### Team Members
+- Josh
+- Anisha
+- Jerry
