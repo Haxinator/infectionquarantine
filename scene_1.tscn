@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7rkdddy11o7b"]
+[gd_scene load_steps=4 format=3 uid="uid://psjkoas5pbfp"]
 
-[ext_resource type="PackedScene" uid="uid://dphb3n2u8gxk8" path="res://Scenes/GUI.tscn" id="1_3sd7o"]
 [ext_resource type="Script" uid="uid://ckmb1c7xpr0v7" path="res://Scripts/user_inferface.gd" id="1_3xosi"]
+[ext_resource type="PackedScene" uid="uid://dphb3n2u8gxk8" path="res://Scenes/GUI.tscn" id="2_1abo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1abo5"]
 size = Vector2(1158, 100)
@@ -14,9 +14,9 @@ script = ExtResource("1_3xosi")
 [node name="Camera2D" type="Camera2D" parent="UserInferface"]
 offset = Vector2(576, 324)
 
-[node name="Control" parent="UserInferface" instance=ExtResource("1_3sd7o")]
+[node name="Control" parent="UserInferface" instance=ExtResource("2_1abo5")]
 offset_right = 1152.0
-offset_bottom = 1286.0
+offset_bottom = 1296.0
 
 [node name="GoUp" type="Area2D" parent="UserInferface"]
 
