@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4mlkwq2oroci"]
 
-[ext_resource type="Script" uid="uid://c67kt0vvjhetn" path="res://start_screen.gd" id="1_s4vtk"]
+[ext_resource type="Script" uid="uid://c67kt0vvjhetn" path="res://Scripts/start_screen.gd" id="1_ko4ly"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nitfa"]
 font_size = 64
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-script = ExtResource("1_s4vtk")
+script = ExtResource("1_ko4ly")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

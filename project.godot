@@ -13,4 +13,4 @@ config_version=5
 config/name="InfectionQuarantine"
 run/main_scene="uid://4mlkwq2oroci"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
