@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dphb3n2u8gxk8"]
+[gd_scene load_steps=3 format=3 uid="uid://dphb3n2u8gxk8"]
+
+[ext_resource type="Texture2D" uid="uid://chfjy6q77ouwt" path="res://Assets/Placeholder1.PNG" id="1_bpa6r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l72ry"]
 font_color = Color(0, 0, 0, 1)
@@ -23,10 +25,10 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
+texture = ExtResource("1_bpa6r")
+expand_mode = 5
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer"]
 layout_mode = 2
