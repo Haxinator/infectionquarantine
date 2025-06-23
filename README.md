@@ -4,4 +4,4 @@
 ### Team Members
 - Josh
 - Anisha
-- Jerry
+- Jeremy
