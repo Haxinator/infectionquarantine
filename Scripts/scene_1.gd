@@ -2,8 +2,8 @@ extends Node2D
 
 signal dialogueStart
 
-const nurse = preload("res://Scenes/nurse.tscn")
-const patient = preload("res://Scenes/Patient.tscn")
+const nurse = preload("res://Scenes/NPCS/nurse.tscn")
+const patient = preload("res://Scenes/NPCS/Patient.tscn")
 
 var seeingPatient = true
 var infront = null
