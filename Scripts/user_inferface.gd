@@ -1,9 +1,11 @@
 extends Node2D
 
+#Currently grabs the absolute path to the folder GUI. TODO: Update path to folder node
+@onready var folder = get_node("GUI/CenterContainer/Folder")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,8 +20,11 @@ func _on_go_up_mouse_entered() -> void:
 
 
 func _on_microsope_pressed() -> void:
-	print("Microscope Pressed!")
+	print("Computer Pressed!")
 
 
-func _on_symptoms_folder_pressed() -> void:
-	print("Symptoms Folder Pressed!")
+func _on_symptoms_folder_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		folder.visible = true
+	else:
+		folder.visible = false

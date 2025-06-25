@@ -59,6 +59,7 @@ offset_left = 310.0
 offset_top = 458.0
 offset_right = 552.0
 offset_bottom = 636.0
+toggle_mode = true
 
 [node name="Label Placeholder" type="Label" parent="UserInferface/Clickable Areas/Symptoms Folder"]
 layout_mode = 0
@@ -68,4 +69,4 @@ text = "Symptoms"
 label_settings = SubResource("LabelSettings_0jpfo")
 
 [connection signal="pressed" from="UserInferface/Clickable Areas/Computer" to="UserInferface" method="_on_microsope_pressed"]
-[connection signal="pressed" from="UserInferface/Clickable Areas/Symptoms Folder" to="UserInferface" method="_on_symptoms_folder_pressed"]
+[connection signal="toggled" from="UserInferface/Clickable Areas/Symptoms Folder" to="UserInferface" method="_on_symptoms_folder_toggled"]

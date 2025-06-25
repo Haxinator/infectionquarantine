@@ -10,3 +10,5 @@ script = ExtResource("1_m2tc1")
 [node name="Scene1" parent="." instance=ExtResource("2_bwyv8")]
 
 [node name="Patient" parent="." instance=ExtResource("3_7cxpe")]
+
+[editable path="Patient"]

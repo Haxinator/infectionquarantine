@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dphb3n2u8gxk8"]
+[gd_scene load_steps=3 format=3 uid="uid://dphb3n2u8gxk8"]
 
 [ext_resource type="Texture2D" uid="uid://brqjfexf6l818" path="res://Assets/Placeholder2.PNG" id="1_t80um"]
+[ext_resource type="Texture2D" uid="uid://dvsxc38p14h03" path="res://Assets/Symptoms-Folder-Placeholder.PNG" id="2_gxxt3"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -23,7 +24,25 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="Background" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_t80um")
 expand_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+metadata/_edit_use_anchors_ = true
+
+[node name="Folder" type="TextureRect" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_gxxt3")
