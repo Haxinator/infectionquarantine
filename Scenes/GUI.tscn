@@ -5,7 +5,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_l72ry"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control"]
+[node name="GUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
