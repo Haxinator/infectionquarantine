@@ -3,7 +3,7 @@ extends Node2D
 signal dialogueStart
 
 const nurse = preload("res://Scenes/NPCS/nurse.tscn")
-const patient = preload("res://Scenes/NPCS/Patient.tscn")
+const patient = preload("res://Scenes/NPCS/Patient.tscn") #Patient is invisible by default
 
 var seeingPatient = true
 var infront = null
@@ -23,11 +23,12 @@ func DialogicSignal(arg: String):
 		seeingPatient = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not seeingPatient:
 		seeingPatient = true
 		var patientCpy = patient.instantiate()
 		infront = patientCpy
+		patientCpy.visible = true
 		patientCpy.position = get_viewport_rect().size/2
 		#patientCpy.get_node("AnimationPlayer").play("WalkIn")
 		
