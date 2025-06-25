@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dphb3n2u8gxk8"]
 
-[ext_resource type="Texture2D" uid="uid://chfjy6q77ouwt" path="res://Assets/Placeholder1.PNG" id="1_bpa6r"]
+[ext_resource type="Texture2D" uid="uid://brqjfexf6l818" path="res://Assets/Placeholder2.PNG" id="1_t80um"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -25,5 +25,5 @@ theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_bpa6r")
+texture = ExtResource("1_t80um")
 expand_mode = 5

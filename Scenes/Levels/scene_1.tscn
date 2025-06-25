@@ -25,10 +25,10 @@ offset_right = 1152.0
 offset_bottom = 1296.0
 
 [node name="Tools UI" parent="UserInferface" instance=ExtResource("4_0jpfo")]
-offset_left = 667.0
-offset_top = 541.0
-offset_right = 1042.0
-offset_bottom = 635.0
+offset_left = 572.0
+offset_top = 504.0
+offset_right = 911.0
+offset_bottom = 592.0
 
 [node name="Clickable Areas" type="Control" parent="UserInferface"]
 layout_mode = 3
@@ -36,28 +36,29 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Microsope" type="TextureButton" parent="UserInferface/Clickable Areas"]
+[node name="Computer" type="TextureButton" parent="UserInferface/Clickable Areas"]
 layout_mode = 0
-offset_left = 1014.0
-offset_top = 297.0
+offset_left = 923.0
+offset_top = 274.0
 offset_right = 1140.0
 offset_bottom = 522.0
 
-[node name="Label Placeholder" type="Label" parent="UserInferface/Clickable Areas/Microsope"]
+[node name="Label Placeholder" type="Label" parent="UserInferface/Clickable Areas/Computer"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Microscope"
+text = "Computer
+"
 label_settings = SubResource("LabelSettings_tp648")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Symptoms Folder" type="TextureButton" parent="UserInferface/Clickable Areas"]
 layout_mode = 0
-offset_left = 380.0
-offset_top = 460.0
-offset_right = 610.0
-offset_bottom = 634.0
+offset_left = 310.0
+offset_top = 458.0
+offset_right = 552.0
+offset_bottom = 636.0
 
 [node name="Label Placeholder" type="Label" parent="UserInferface/Clickable Areas/Symptoms Folder"]
 layout_mode = 0
@@ -66,5 +67,5 @@ offset_bottom = 23.0
 text = "Symptoms"
 label_settings = SubResource("LabelSettings_0jpfo")
 
-[connection signal="pressed" from="UserInferface/Clickable Areas/Microsope" to="UserInferface" method="_on_microsope_pressed"]
+[connection signal="pressed" from="UserInferface/Clickable Areas/Computer" to="UserInferface" method="_on_microsope_pressed"]
 [connection signal="pressed" from="UserInferface/Clickable Areas/Symptoms Folder" to="UserInferface" method="_on_symptoms_folder_pressed"]
