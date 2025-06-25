@@ -23,10 +23,12 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "Nurse": "res://dialog/characters/Nurse.dch",
+"Patient": "res://dialog/characters/Patient.dch",
 "You": "res://dialog/characters/You.dch"
 }
 directories/dtl_directory={
-"NurseIntro": "res://dialog/NurseIntro.dtl"
+"NurseIntro": "res://dialog/NurseIntro.dtl",
+"Patient1": "res://dialog/Patient1.dtl"
 }
 layout/style_directory={}
 

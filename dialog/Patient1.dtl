@@ -1,0 +1,12 @@
+- Where were you today?
+	Patient: I was at the park.
+	jump 
+- Can I see your ID?
+	- Can you tell me your name and date if birth please?
+		- Your ID doesn't match
+- How are you feeling?
+	Patient: I feel fine.
+	jump 
+- Go away
+	[signal arg="WalkAway"]
+- Nevermind
