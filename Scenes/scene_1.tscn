@@ -5,9 +5,6 @@
 [ext_resource type="Script" uid="uid://ckmb1c7xpr0v7" path="res://Scripts/user_inferface.gd" id="1_3xosi"]
 [ext_resource type="PackedScene" uid="uid://hqpx4ofygvsx" path="res://Scenes/Tools UI.tscn" id="4_0jpfo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1abo5"]
-size = Vector2(1158, 100)
-
 [sub_resource type="LabelSettings" id="LabelSettings_tp648"]
 font_color = Color(0, 0, 0, 1)
 
@@ -69,7 +66,5 @@ offset_bottom = 23.0
 text = "Symptoms"
 label_settings = SubResource("LabelSettings_0jpfo")
 
-[connection signal="mouse_entered" from="UserInferface/GoUp" to="UserInferface" method="_on_go_up_mouse_entered"]
-[connection signal="mouse_entered" from="UserInferface/GoDown" to="UserInferface" method="_on_go_down_mouse_entered"]
 [connection signal="pressed" from="UserInferface/Clickable Areas/Microsope" to="UserInferface" method="_on_microsope_pressed"]
 [connection signal="pressed" from="UserInferface/Clickable Areas/Symptoms Folder" to="UserInferface" method="_on_symptoms_folder_pressed"]
