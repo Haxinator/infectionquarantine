@@ -9,7 +9,6 @@ radius = 149.0
 height = 416.0
 
 [node name="Patient" type="Area2D"]
-visible = false
 script = ExtResource("1_16fsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

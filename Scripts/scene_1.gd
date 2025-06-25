@@ -3,7 +3,7 @@ extends Node2D
 signal dialogueStart
 
 const nurse = preload("res://Scenes/NPCS/nurse.tscn")
-const patient = preload("res://Scenes/NPCS/Patient.tscn") #Patient is invisible by default
+const patient = preload("res://Scenes/NPCS/Patient.tscn")
 
 var seeingPatient = true
 var infront = null

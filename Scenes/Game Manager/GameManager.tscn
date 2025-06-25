@@ -1,14 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbl58453vifpf"]
+[gd_scene load_steps=3 format=3 uid="uid://bbl58453vifpf"]
 
 [ext_resource type="Script" uid="uid://60ome7sy7vpi" path="res://Scripts/game_manager.gd" id="1_m2tc1"]
 [ext_resource type="PackedScene" uid="uid://c7rkdddy11o7b" path="res://Scenes/Levels/scene_1.tscn" id="2_bwyv8"]
-[ext_resource type="PackedScene" uid="uid://x3c864jcg5x0" path="res://Scenes/NPCS/Patient.tscn" id="3_7cxpe"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_m2tc1")
 
 [node name="Scene1" parent="." instance=ExtResource("2_bwyv8")]
-
-[node name="Patient" parent="." instance=ExtResource("3_7cxpe")]
-
-[editable path="Patient"]
