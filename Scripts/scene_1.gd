@@ -30,6 +30,12 @@ func _process(delta: float) -> void:
 		infront = patientCpy
 		patientCpy.position = get_viewport_rect().size/2
 		#patientCpy.get_node("AnimationPlayer").play("WalkIn")
+		
+		if randi() % 2 == 0:
+			patientCpy.setHealthy()
+		else:
+			patientCpy.setSick()
+		
 		add_child(patientCpy)
 
 func runDiagolue(dialogue: String):
