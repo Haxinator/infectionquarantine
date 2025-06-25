@@ -1,14 +1,8 @@
 extends Node2D
 
-## Sets the number of patients to get through that day/level
-@export var number_of_patients : int = 0
-
-## Gets current level (finds the first child node of the root) - IN PROGRESS
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

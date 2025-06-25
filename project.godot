@@ -15,9 +15,6 @@ run/main_scene="uid://4mlkwq2oroci"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
-[display]
-
-mouse_cursor/custom_image="uid://d3s2jc0y3jfht"
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
@@ -33,9 +30,17 @@ directories/dtl_directory={
 }
 layout/style_directory={}
 
+[display]
+
+mouse_cursor/custom_image="uid://d3s2jc0y3jfht"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[global_group]
+
+Level="Identifies Level Nodes"
 
 [input]
 
