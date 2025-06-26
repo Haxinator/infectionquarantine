@@ -2,6 +2,7 @@
 	Patient: I was at the park.
 	jump 
 - Can I see your ID?
+	join ID1 center
 	- Can you tell me your name and date if birth please?
 		- Your ID doesn't match
 - How are you feeling?

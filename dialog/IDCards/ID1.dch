@@ -1,0 +1,31 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "",
+"suffix": ""
+},
+&"default_portrait": "ID",
+&"description": "",
+&"display_name": "ID1",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"ID": {
+"export_overrides": {
+"image": "\"res://dialog/IDCards/ID.jpg\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.45,
+"scene": ""
+}
+},
+&"scale": 1.0
+}
