@@ -2,9 +2,14 @@
 	Patient: I was at the park.
 	jump 
 - Can I see your ID?
+	[clear time="1.0"]
 	join ID1 center
-	- Can you tell me your name and date if birth please?
-		- Your ID doesn't match
+	- Name and date of birth please.
+		Patient: Frankie C Blight, I'm 28 years old
+		- Did you mean Frankie B Blight?
+			Patient: Yes, that's what I meant.
+		- Did you mean Frankie A Blight?
+			Patient: Yes, that's what I meant.
 - How are you feeling?
 	Patient: I feel fine.
 	jump 
