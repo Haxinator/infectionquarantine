@@ -8,18 +8,19 @@ font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [node name="LayeredPortrait" type="CanvasGroup"]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_uubi5")
 
 [node name="Layer1" type="Sprite2D" parent="."]
 
-[node name="Group1" type="Node2D" parent="."]
+[node name="properties" type="Node2D" parent="."]
 
-[node name="Layer1" type="Sprite2D" parent="Group1"]
+[node name="Layer1" type="Sprite2D" parent="properties"]
 texture = ExtResource("2_dbb1x")
 
-[node name="Layer2" type="Sprite2D" parent="Group1"]
+[node name="Layer2" type="Sprite2D" parent="properties"]
 
-[node name="Label" type="Label" parent="Group1"]
+[node name="name" type="Label" parent="properties"]
 offset_left = 24.0
 offset_top = -64.0
 offset_right = 132.0
@@ -27,7 +28,7 @@ offset_bottom = -22.0
 text = "Frankie A Blight"
 label_settings = SubResource("LabelSettings_375hq")
 
-[node name="Label2" type="Label" parent="Group1"]
+[node name="dob" type="Label" parent="properties"]
 offset_left = 25.0
 offset_top = -3.0
 offset_right = 133.0
