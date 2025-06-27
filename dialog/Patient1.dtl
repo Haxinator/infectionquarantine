@@ -1,5 +1,5 @@
 - Where were you today?
-	Patient: I was at the park.
+	Patient: {Patient.action} {Patient.location}.
 	jump 
 - Can I see your ID?
 	[clear time="1.0"]
@@ -8,7 +8,7 @@
 		Patient: {Patient.name}, {Patient.dob}
 	[signal arg="hideID"]
 - How are you feeling?
-	Patient: I feel fine.
+	Patient: {Patient.feeling}
 	jump 
 - Go away
 	[signal arg="WalkAway"]

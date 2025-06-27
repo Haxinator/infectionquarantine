@@ -37,8 +37,14 @@ layout/style_list=[]
 layout/default_style="Default"
 variables={
 "Patient": {
+"action": "",
+"aggression": 0,
+"anxiety": 0,
 "dob": "",
-"name": ""
+"feeling": "",
+"location": "",
+"name": "",
+"variant": 0
 }
 }
 extensions_folder="res://addons/dialogic_additions"
