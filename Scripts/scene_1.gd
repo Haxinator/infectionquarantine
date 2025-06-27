@@ -21,6 +21,10 @@ func DialogicSignal(arg: String):
 	if arg == "WalkAway":
 		infront.get_node("AnimationPlayer").play("WalkAway")
 		seeingPatient = false
+	if arg == "showID":
+		infront.showID()
+	if arg == "hideID":
+		infront.removeID()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
