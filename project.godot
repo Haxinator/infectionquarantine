@@ -40,7 +40,11 @@ variables={
 "Patient": {
 "action": "",
 "aggression": 0,
+"aggressive1": "",
+"aggressive2": "",
 "anxiety": 0,
+"anxious1": "",
+"anxious2": "",
 "chance": 50,
 "dob": "",
 "feeling": "",
