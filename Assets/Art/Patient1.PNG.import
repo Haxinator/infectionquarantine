@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o6utmdlcwhxs"
-path="res://.godot/imported/Patient1.PNG-a6e58d3e990e444c39a300738fd74867.ctex"
+path="res://.godot/imported/Patient1.PNG-e54e10c87f1255dc2c16ca42b1a6a2d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Patient1.PNG"
-dest_files=["res://.godot/imported/Patient1.PNG-a6e58d3e990e444c39a300738fd74867.ctex"]
+source_file="res://Assets/Art/Patient1.PNG"
+dest_files=["res://.godot/imported/Patient1.PNG-e54e10c87f1255dc2c16ca42b1a6a2d1.ctex"]
 
 [params]
 

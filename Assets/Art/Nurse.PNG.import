@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3s2jc0y3jfht"
-path="res://.godot/imported/Placeholder Hand Cursor.png-bef5050a186e34b1970f5b22848dbe85.ctex"
+uid="uid://dr5eysl2jm15e"
+path="res://.godot/imported/Nurse.PNG-1cda62944992028221273de87b77bbfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Placeholder Hand Cursor.png"
-dest_files=["res://.godot/imported/Placeholder Hand Cursor.png-bef5050a186e34b1970f5b22848dbe85.ctex"]
+source_file="res://Assets/Art/Nurse.PNG"
+dest_files=["res://.godot/imported/Nurse.PNG-1cda62944992028221273de87b77bbfa.ctex"]
 
 [params]
 
