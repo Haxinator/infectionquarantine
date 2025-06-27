@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bglfadad4gylo"]
 
 [ext_resource type="Script" uid="uid://dvgcsfg5iw1s3" path="res://Scripts/nurse.gd" id="1_parov"]
-[ext_resource type="Texture2D" uid="uid://dr5eysl2jm15e" path="res://Assets/Nurse.PNG" id="2_wdx58"]
+[ext_resource type="Texture2D" uid="uid://dr5eysl2jm15e" path="res://Assets/Art/Nurse.PNG" id="2_wdx58"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apa5u"]
 radius = 113.0

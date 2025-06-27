@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://x3c864jcg5x0"]
 
 [ext_resource type="Script" uid="uid://dw0hai8bkixyh" path="res://Scripts/patient.gd" id="1_16fsv"]
-[ext_resource type="Texture2D" uid="uid://o6utmdlcwhxs" path="res://Assets/Patient1.PNG" id="2_8ij1l"]
+[ext_resource type="Texture2D" uid="uid://o6utmdlcwhxs" path="res://Assets/Art/Patient1.PNG" id="2_8ij1l"]
 [ext_resource type="PackedScene" uid="uid://y5mb6y4avh7x" path="res://Scenes/Components/character_animation.tscn" id="3_ed4br"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ed4br"]

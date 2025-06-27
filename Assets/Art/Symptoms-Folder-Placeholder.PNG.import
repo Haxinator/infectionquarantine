@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvsxc38p14h03"
-path="res://.godot/imported/Symptoms-Folder-Placeholder.PNG-17a290ad22500e0a8741a06bfc9507d5.ctex"
+path="res://.godot/imported/Symptoms-Folder-Placeholder.PNG-24a7572bbf8d95c6b436614c5af7e5f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Symptoms-Folder-Placeholder.PNG"
-dest_files=["res://.godot/imported/Symptoms-Folder-Placeholder.PNG-17a290ad22500e0a8741a06bfc9507d5.ctex"]
+source_file="res://Assets/Art/Symptoms-Folder-Placeholder.PNG"
+dest_files=["res://.godot/imported/Symptoms-Folder-Placeholder.PNG-24a7572bbf8d95c6b436614c5af7e5f4.ctex"]
 
 [params]
 
