@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dphb3n2u8gxk8"]
+[gd_scene load_steps=6 format=3 uid="uid://dphb3n2u8gxk8"]
 
+[ext_resource type="Script" uid="uid://hcldmt5777ki" path="res://Scripts/gui.gd" id="1_b1cy7"]
 [ext_resource type="Texture2D" uid="uid://brqjfexf6l818" path="res://Assets/Placeholder2.PNG" id="1_t80um"]
 [ext_resource type="Texture2D" uid="uid://dvsxc38p14h03" path="res://Assets/Symptoms-Folder-Placeholder.PNG" id="2_gxxt3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t80um"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gxxt3"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -12,37 +19,105 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_b1cy7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -648.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Background" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_t80um")
-expand_mode = 5
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_right = 768.0
-offset_bottom = 432.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-metadata/_edit_use_anchors_ = true
-
-[node name="Folder" type="TextureRect" parent="CenterContainer"]
+[node name="Folder Pop Up" type="Sprite2D" parent="."]
 visible = false
-layout_mode = 2
+z_index = 1
+position = Vector2(576, 324)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_gxxt3")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Scene" type="Sprite2D" parent="Background"]
+position = Vector2(230.4, 129.6)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_t80um")
+offset = Vector2(576, 324)
+
+[node name="Clickable Areas" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Computer" type="TextureButton" parent="Clickable Areas"]
+offset_left = 923.0
+offset_top = -374.0
+offset_right = 1140.0
+offset_bottom = -126.0
+
+[node name="Label Placeholder" type="Label" parent="Clickable Areas/Computer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Computer
+"
+label_settings = SubResource("LabelSettings_t80um")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Symptoms Folder" type="TextureButton" parent="Clickable Areas"]
+offset_left = 310.0
+offset_top = -190.0
+offset_right = 552.0
+offset_bottom = -12.0
+toggle_mode = true
+
+[node name="Label Placeholder" type="Label" parent="Clickable Areas/Symptoms Folder"]
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 23.0
+text = "Symptoms"
+label_settings = SubResource("LabelSettings_gxxt3")
+
+[node name="Thermometer" type="TextureButton" parent="Clickable Areas"]
+offset_left = 583.0
+offset_top = -137.0
+offset_right = 679.0
+offset_bottom = -65.0
+toggle_mode = true
+
+[node name="Label Placeholder" type="Label" parent="Clickable Areas/Thermometer"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 23.0
+text = "Thermometer"
+label_settings = SubResource("LabelSettings_gxxt3")
+
+[node name="Stethoscope" type="TextureButton" parent="Clickable Areas"]
+offset_left = 690.0
+offset_top = -138.0
+offset_right = 794.0
+offset_bottom = -64.0
+toggle_mode = true
+
+[node name="Label Placeholder" type="Label" parent="Clickable Areas/Stethoscope"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 23.0
+text = "Stethoscope"
+label_settings = SubResource("LabelSettings_gxxt3")
+
+[node name="Syringe" type="TextureButton" parent="Clickable Areas"]
+offset_left = 802.0
+offset_top = -136.0
+offset_right = 906.0
+offset_bottom = -66.0
+toggle_mode = true
+
+[node name="Label Placeholder" type="Label" parent="Clickable Areas/Syringe"]
+layout_mode = 0
+offset_right = 58.0
+offset_bottom = 23.0
+text = "Syringe"
+label_settings = SubResource("LabelSettings_gxxt3")
+
+[connection signal="pressed" from="Clickable Areas/Computer" to="." method="_on_computer_pressed"]
+[connection signal="toggled" from="Clickable Areas/Symptoms Folder" to="." method="_on_symptoms_folder_toggled"]
+[connection signal="pressed" from="Clickable Areas/Thermometer" to="." method="_on_thermometer_pressed"]
+[connection signal="pressed" from="Clickable Areas/Stethoscope" to="." method="_on_stethoscope_pressed"]
+[connection signal="pressed" from="Clickable Areas/Syringe" to="." method="_on_syringe_pressed"]
