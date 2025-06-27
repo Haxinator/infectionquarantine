@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cdumeuqlhl248" path="res://dialog/IDCards/ID.jpg" id="2_dbb1x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_375hq"]
-font_size = 30
+font_size = 28
 font_color = Color(0, 0, 0, 1)
 
 [node name="LayeredPortrait" type="CanvasGroup"]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_uubi5")
 
 [node name="Layer1" type="Sprite2D" parent="."]
@@ -21,17 +21,17 @@ texture = ExtResource("2_dbb1x")
 [node name="Layer2" type="Sprite2D" parent="properties"]
 
 [node name="name" type="Label" parent="properties"]
-offset_left = 24.0
-offset_top = -64.0
-offset_right = 132.0
-offset_bottom = -22.0
-text = "Frankie A Blight"
+offset_left = 22.0
+offset_top = -62.0
+offset_right = 290.0
+offset_bottom = -20.0
+text = "Bellamy A Robinson"
 label_settings = SubResource("LabelSettings_375hq")
 
 [node name="dob" type="Label" parent="properties"]
-offset_left = 25.0
-offset_top = -3.0
-offset_right = 133.0
-offset_bottom = 39.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = 118.0
+offset_bottom = 40.0
 text = "28"
 label_settings = SubResource("LabelSettings_375hq")

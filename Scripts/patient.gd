@@ -15,13 +15,13 @@ var variant = -1
 
 const TOTAL_HEALTHY = 2
 const TOTAL_SICK = 1
-var firstNames = ["Frankie", "Jackie", "Brodie", "Charlie", "Zara", "Robin"]
-var LastNames = ["Quinn", "Blight", "Bacon", "Zion", "Swap", "Mctosh"]
+var firstNames = ["Frankie", "Jackie", "Brodie", "Charlie", "Ash", "Robin", "Blake", "Jett", "Sage", "Ridley", "Spencer", "Basil", "Sunny", "Tiger", "Katie", "Stevie", "Andie", "Billie", "Jessie", "Ollie", "Kris", "Kim", "Alex", "Bailey", "Bellamy", "Adrian", "Aubrey", "Bryce", "Francis", "Jean", "London", "Paris", "Pat", "Remy", "Ricky", "Rumi", "Sidney", "Terry", "Kanye", "Taylor"]
+var LastNames = ["Quinn", "Alexander", "Griffin", "Hope", "Cassidy", "Jenkins", "Perry", "Smith", "Johnson", "Brown", "Garcia", "Miller", "Davis", "Jackson", "Lee", "Robinson", "Young", "King", "White", "Pinkman", "Cook", "Murphy", "Edwards", "Wood", "Blight", "Bacon", "Zion", "Swap", "Mctosh", "Swift", "West", "East"]
 var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
-var notFeelingSick = ["I feel fine.", "never better.", "I don't feel sick at all.", "I haven't noticed anything.", "I think I'm ok."]
-var locations = ["Park", "Recreational area", "Rec Room", "Kitchen", "Canteen", "Dormatory", "Gym", "Library", "Common Area"]
-var feelingSick = ["I feel like throwing up.", "I feel dizzy.", "I feel sick.", "I haven't been sleeping, I've been up all night coughing."]
-var actions = ["I was working in the", "I was hanging out with my friends in the", "I've was reading a book in the", "I was in"]
+var notFeelingSick = ["I feel fine.", "I'm feeling good.", "I'm doing fine.", "Pretty good.","I'm doing well.", "I'm alright.", "Can't complain.", "Not bad.", "never better.", "I don't feel sick.", "I haven't noticed anything.", "I think I'm ok."]
+var locations = ["Park", "Recreational area", "Rec Room", "Kitchen", "Canteen", "Dormatory", "Gym", "Library", "Common Area", "Meeting Room", "Power & Utility Room", "Infirmary"]
+var feelingSick = ["I feel like throwing up.", "I feel dizzy.", "I feel sick.", "I haven't been sleeping.", "I haven't been sleeping, I've been up all night coughing."]
+var actions = ["I was working in the", "I was walking around the", "I was just hanging out in the", "I was hanging out with my friends in the", "I've was reading a book in the", "I was in the"]
 
 #Most likely randomise character here.
 # Called when the node enters the scene tree for the first time.
@@ -47,7 +47,11 @@ func getName():
 	var first = randi_range(0, len(firstNames)-1)
 	var last = randi_range(0, len(LastNames)-1)
 	var mid = randi_range(0,len(characters)-1)
-	return firstNames[first] + " " + characters[mid] + " " + LastNames[last] 
+	
+	if mid == len(characters)-1:
+		return firstNames[first] + " " + LastNames[last]
+	else:
+		return firstNames[first] + " " + characters[mid] + " " + LastNames[last] 
 
 #overly complex funcion for determining DOB
 func getDOB():
