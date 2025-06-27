@@ -90,7 +90,7 @@ func setHealthy():
 	heartRate = randi_range(60, 100)
 	temp = randf_range(36, 37.9)
 	patient = "Patient" + str(randi_range(1, TOTAL_HEALTHY))
-	get_node("Sprite2D").texture = load("res://Assets/" + patient + ".PNG")
+	get_node("Sprite2D").texture = load("res://Assets/Art/" + patient + ".PNG")
 	Dialogic.VAR.Patient.feeling = notFeelingSick[randi_range(0, len(notFeelingSick)-1)]
 	Dialogic.VAR.Patient.location = locations[randi_range(0, len(locations)-1)]
 	Dialogic.VAR.Patient.action = actions[randi_range(0, len(actions)-1)]
