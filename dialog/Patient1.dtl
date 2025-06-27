@@ -2,14 +2,96 @@
 	Patient: {Patient.action} {Patient.location}.
 	jump 
 - Can I see your ID?
-	[clear time="1.0"]
+	elif {Patient.anxiety} == 1:
+		Patient: Why is something wrong?
+		You: It's just protocol.
 	[signal arg="showID"]
 	- Name and date of birth please.
-		Patient: {Patient.name}, {Patient.dob}
+		if {Patient.aggression} == 0:
+			Patient: My name is {Patient.name} and I was born on {Patient.dob}.
+		elif {Patient.aggression} == 1:
+			Patient: Why do I need to tell you my name and date of birth? It's already on my ID card.
+			You: It's just procedure
+			Patient: ...
+			Patient: {Patient.name}, {Patient.dob}
+		if {Patient.aggression} == 2:
+			Patient: No.
+			label askID
+			- Please
+				if {Patient.chance} > 50.0:
+					Patient: Fine, my name is {Patient.name} and my date of birth is {Patient.dob}
+				else:
+					Patient: I said no.
+					jump askID
+			- Why not?
+				if {Patient.wasConvinced} == true:
+					Patient: I already told you.
+					jump askID
+				else:
+					Patient: You'll kill me like the rest.
+					- I won't
+						You: I don't want anyone to die. Please let me help you.
+						Patient: ...
+						set {Patient.chance} += range(0,20).pick_random()
+					- We're trying to help you
+						You: We are doing the best we can.
+						Patient: It's not enough.
+						set {Patient.chance} += range(0,10).pick_random()
+					set {Patient.wasConvinced} = true
+					jump askID
+			- Fine.
 	[signal arg="hideID"]
+	jump 
 - How are you feeling?
-	Patient: {Patient.feeling}
+	if {Patient.aggression} == 0:
+		Patient: {Patient.feeling}
+	elif {Patient.aggression} == 1:
+		Patient: What do you mean?
+		You: Do you have any symptoms?
+		Patient: Why do you want to know?
+		You: If you are sick I can place you into quarantine so you can recieve medical care.
+		Patient: I haven't seen anyone come back from quarantine.
+		You: It has only been a few days, it takes time to get better.
+		Patient: I guess you're right... {Patient.feeling}
+	elif {Patient.aggression} == 2:
+		Patient: I don't want to be here. Just get this over and done with.
+		label AskFeel
+		- If you comply we can finish sooner
+			Patient: Why should I help you?
+			if {Patient.wasConvinced2} == false:
+				- I'm trying to save your life
+					You: In quarantine you'll recieve medical care and increase your chance of survival.
+					Patient: Don't lie to me, we both know there is no cure.
+					set {Patient.chance} += range(-10,10).pick_random()
+				- I'm trying to stop the virus
+					You: I need to stop the virus from spreading.
+					Patient: You're doing a bad job.
+					- People like you don't help
+						Patient: ...
+						set {Patient.chance} += range(-10,10).pick_random()
+					- It's a difficult situation
+						You: We are doing the best we can with the resources we have.
+						Patient: You should be doing more. Too many people are dying.
+						You: Our staff are stretched thin, we are trying our best to take care of the sick whilst preventing more people from falling ill. If you help me by answering my questions I can do more.
+						set {Patient.chance} += range(0,20).pick_random()
+				- Do you want blood on your hands?
+					You: If you are sick and I release you into the community, more people will die. Do you want to be responsible for that?
+					Patient: ...
+					set {Patient.chance} += range(0,20).pick_random()
+				set {Patient.wasConvinced2} = true
+				jump AskFeel
+			else:
+				Patient: You're a liar.
+				jump AskFeel
+		- People are dying. I must know.
+			if {Patient.chance} > 50.0:
+				Patient: Alright... I see your point. {Patient.feeling}
+			else:
+				Patient: Yes people are dying. What are you doing to help them? Playing judge, jury and executioner?
+				You: Forget it...
+		- Fine.
+			jump 
 	jump 
 - Go away
 	[signal arg="WalkAway"]
-- Nevermind
+- That's all

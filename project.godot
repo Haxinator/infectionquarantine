@@ -40,11 +40,14 @@ variables={
 "action": "",
 "aggression": 0,
 "anxiety": 0,
+"chance": 50,
 "dob": "",
 "feeling": "",
 "location": "",
 "name": "",
-"variant": 0
+"variant": 0,
+"wasConvinced": false,
+"wasConvinced2": false
 }
 }
 extensions_folder="res://addons/dialogic_additions"

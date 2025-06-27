@@ -18,8 +18,8 @@ const TOTAL_SICK = 1
 var firstNames = ["Frankie", "Jackie", "Brodie", "Charlie", "Ash", "Robin", "Blake", "Jett", "Sage", "Ridley", "Spencer", "Basil", "Sunny", "Tiger", "Katie", "Stevie", "Andie", "Billie", "Jessie", "Ollie", "Kris", "Kim", "Alex", "Bailey", "Bellamy", "Adrian", "Aubrey", "Bryce", "Francis", "Jean", "London", "Paris", "Pat", "Remy", "Ricky", "Rumi", "Sidney", "Terry", "Kanye", "Taylor"]
 var LastNames = ["Quinn", "Alexander", "Griffin", "Hope", "Cassidy", "Jenkins", "Perry", "Smith", "Johnson", "Brown", "Garcia", "Miller", "Davis", "Jackson", "Lee", "Robinson", "Young", "King", "White", "Pinkman", "Cook", "Murphy", "Edwards", "Wood", "Blight", "Bacon", "Zion", "Swap", "Mctosh", "Swift", "West", "East"]
 var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
-var notFeelingSick = ["I feel fine.", "I'm feeling good.", "I'm doing fine.", "Pretty good.","I'm doing well.", "I'm alright.", "Can't complain.", "Not bad.", "never better.", "I don't feel sick.", "I haven't noticed anything.", "I think I'm ok."]
-var locations = ["Park", "Recreational area", "Rec Room", "Kitchen", "Canteen", "Dormatory", "Gym", "Library", "Common Area", "Meeting Room", "Power & Utility Room", "Infirmary"]
+var notFeelingSick = ["I feel fine.", "I'm feeling good.", "I'm doing fine.", "Pretty good.","I'm doing well.", "I'm alright.", "Can't complain.", "Not bad.", "Never better.", "I don't feel sick.", "I haven't noticed anything.", "I think I'm ok."]
+var locations = ["Park", "Recreational area", "Rec Room", "Kitchen", "Canteen", "Dormatory", "Gym", "Library", "Common Area", "Meeting Room", "Power & Utility Room", "Utility Room", "Infirmary"]
 var feelingSick = ["I feel like throwing up.", "I feel dizzy.", "I feel sick.", "I haven't been sleeping.", "I haven't been sleeping, I've been up all night coughing."]
 var actions = ["I was working in the", "I was walking around the", "I was just hanging out in the", "I was hanging out with my friends in the", "I've was reading a book in the", "I was in the"]
 
@@ -29,6 +29,7 @@ func _ready() -> void:
 	DOB = getDOB()
 	patientName = getName()
 	aggression = randi_range(0,2)
+	aggression = 2
 	anxiety = randi_range(0,2)
 	variant = randi_range(0,2)
 	
@@ -38,6 +39,9 @@ func _ready() -> void:
 	Dialogic.VAR.Patient.aggression = aggression
 	Dialogic.VAR.Patient.anxiety = anxiety
 	Dialogic.VAR.Patient.variant = variant
+	Dialogic.VAR.Patient.chance = randi_range(0,100)
+	Dialogic.VAR.Patient.wasConvinced = false
+	Dialogic.VAR.Patient.wasConvinced2 = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
