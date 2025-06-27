@@ -22,6 +22,10 @@ var notFeelingSick = ["I feel fine.", "I'm feeling good.", "I'm doing fine.", "P
 var locations = ["Park", "Recreational area", "Rec Room", "Kitchen", "Canteen", "Dormatory", "Gym", "Library", "Common Area", "Meeting Room", "Power & Utility Room", "Utility Room", "Infirmary"]
 var feelingSick = ["I feel like throwing up.", "I feel dizzy.", "I feel sick.", "I haven't been sleeping.", "I haven't been sleeping, I've been up all night coughing."]
 var actions = ["I was working in the", "I was walking around the", "I was just hanging out in the", "I was hanging out with my friends in the", "I've was reading a book in the", "I was in the"]
+var aggressive1 = ["Why do I need to tell you my name and date of birth? It's already on my ID card.", "This seems excessive.", "..." ,"Is this really necessary?", "I have better things I could be doing with my time."]
+var aggressive2 = ["Yes people are dying. What are you doing to help them? Playing judge, jury and executioner?", "You'll kill me like the rest.", "I want nothing to do with you.", "You're nothing but a murder.", "Stop talking to me.", "Get away from me."]
+var anxious1 = ["Why is something wrong?", "Is something wrong?", "Why are you looking at me like that?", "Did I do something wrong?"]
+var anxious2 = ["Please, please...", "What is it? What's wrong with me?", "I'm not going to die right?", "No, no, no... this can't be happening.", "Please don't let me die."]
 
 #Most likely randomise character here.
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +37,14 @@ func _ready() -> void:
 	anxiety = randi_range(0,2)
 	variant = randi_range(0,2)
 	
+	#must be called to set dialogic vars accordingly
+	setDialogicVars()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func setDialogicVars():
 	#set name and DOB in dialogic
 	Dialogic.VAR.Patient.name = patientName
 	Dialogic.VAR.Patient.dob = DOB
@@ -42,11 +54,11 @@ func _ready() -> void:
 	Dialogic.VAR.Patient.chance = randi_range(0,100)
 	Dialogic.VAR.Patient.wasConvinced = false
 	Dialogic.VAR.Patient.wasConvinced2 = false
+	Dialogic.VAR.Patient.aggressive1 = aggressive1[randi_range(0, len(aggressive1)-1)]
+	Dialogic.VAR.Patient.aggressive2 = aggressive2[randi_range(0, len(aggressive2)-1)]
+	Dialogic.VAR.Patient.anxious1 = anxious1[randi_range(0, len(anxious1)-1)]
+	Dialogic.VAR.Patient.anxious2 = anxious2[randi_range(0, len(anxious2)-1)]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func getName():
 	var first = randi_range(0, len(firstNames)-1)
 	var last = randi_range(0, len(LastNames)-1)
