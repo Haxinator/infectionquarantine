@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # Sets the number of patients to get through that day/level
 @export var number_of_patients : int = 0

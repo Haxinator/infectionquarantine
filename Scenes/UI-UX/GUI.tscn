@@ -21,11 +21,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_b1cy7")
+metadata/_edit_use_anchors_ = true
 
 [node name="Folder Pop Up" type="Sprite2D" parent="."]
 visible = false
@@ -39,33 +39,62 @@ texture = ExtResource("2_gxxt3")
 position = Vector2(-40, -56)
 shape = SubResource("RectangleShape2D_atngs")
 
-[node name="Background" type="Node2D" parent="."]
-z_index = -1
-z_as_relative = false
+[node name="Background2" type="Control" parent="."]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Room" type="Sprite2D" parent="Background"]
-z_index = -1
-z_as_relative = false
-position = Vector2(960, 540)
+[node name="Room" type="TextureRect" parent="Background2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_s0i4c")
+expand_mode = 3
 
-[node name="IV Drip" type="Sprite2D" parent="Background"]
-z_index = -1
-z_as_relative = false
-position = Vector2(960, 540)
+[node name="IV Drip" type="TextureRect" parent="Background2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_knnk2")
+expand_mode = 3
 
-[node name="Table" type="Sprite2D" parent="Background"]
-z_as_relative = false
-position = Vector2(960, 540)
+[node name="Table" type="TextureRect" parent="Background2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_qalk2")
+expand_mode = 3
 
-[node name="Table Assets" type="Sprite2D" parent="Background"]
-z_as_relative = false
-position = Vector2(960, 540)
+[node name="TableAssets" type="TextureRect" parent="Background2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("6_u1lui")
+expand_mode = 3
 
 [node name="Clickable Areas" type="Control" parent="."]
+visible = false
 z_as_relative = false
 layout_mode = 2
 anchors_preset = 0
@@ -76,9 +105,10 @@ offset_bottom = 648.0
 [node name="Screen Left" type="TextureButton" parent="Clickable Areas"]
 z_index = -1
 z_as_relative = false
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.66667
 offset_top = -648.0
-offset_right = 1920.0
 offset_bottom = 432.0
 texture_normal = ExtResource("7_ae3yb")
 

@@ -4,12 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://bc5521jgs3c40" path="res://Scenes/Managers/AudioManager.tscn" id="2_ajldl"]
 [ext_resource type="PackedScene" uid="uid://c7rkdddy11o7b" path="res://Scenes/Levels/scene_1.tscn" id="3_3bpoc"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_vhqvj")
 
 [node name="AudioManager" parent="." instance=ExtResource("2_ajldl")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
-
 [node name="Scene1" parent="." instance=ExtResource("3_3bpoc")]
+layout_mode = 1
