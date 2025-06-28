@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_computer_pressed() -> void:
-	print("Computer Pressed!")
+	pass # Replace with function body.
 
 
 func _on_symptoms_folder_toggled(toggled_on: bool) -> void:
