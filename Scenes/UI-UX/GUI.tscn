@@ -40,7 +40,6 @@ position = Vector2(-40, -56)
 shape = SubResource("RectangleShape2D_atngs")
 
 [node name="Background2" type="Control" parent="."]
-z_index = -100
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,6 +49,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Room" type="TextureRect" parent="Background2"]
+z_index = -100
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +61,7 @@ texture = ExtResource("3_s0i4c")
 expand_mode = 3
 
 [node name="IV Drip" type="TextureRect" parent="Background2"]
+z_index = -90
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
