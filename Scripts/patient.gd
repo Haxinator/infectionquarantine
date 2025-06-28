@@ -3,11 +3,16 @@ extends Node2D
 signal dialogueStart
 
 #Patient Info
+var firstName: String = ""
+var midName: String = ""
+var lastName: String = ""
 var patientName: String = ""
 var DOB: String = "00/00/00"
+var DOBArray = []
 var temp: float = -1
 var heartRate : int = -1
 var bloodContaminated = false
+var confused = false
 var isSick: bool = false
 var patient: String = ""
 var ID = null
@@ -25,7 +30,7 @@ const TOTAL_SICK = 1
 
 #Dialogue
 var firstNames = ["Frankie", "Jackie", "Brodie", "Charlie", "Ash", "Robin", "Blake", "Jett", "Sage", "Ridley", "Spencer", "Basil", "Sunny", "Tiger", "Katie", "Stevie", "Andie", "Billie", "Jessie", "Ollie", "Kris", "Kim", "Alex", "Bailey", "Bellamy", "Adrian", "Aubrey", "Bryce", "Francis", "Jean", "London", "Paris", "Pat", "Remy", "Ricky", "Rumi", "Sidney", "Terry", "Kanye", "Taylor"]
-var LastNames = ["Quinn", "Alexander", "Griffin", "Hope", "Cassidy", "Jenkins", "Perry", "Smith", "Johnson", "Brown", "Garcia", "Miller", "Davis", "Jackson", "Lee", "Robinson", "Young", "King", "White", "Pinkman", "Cook", "Murphy", "Edwards", "Wood", "Blight", "Bacon", "Zion", "Swap", "Mctosh", "Swift", "West", "East"]
+var lastNames = ["Quinn", "Alexander", "Griffin", "Hope", "Cassidy", "Jenkins", "Perry", "Smith", "Johnson", "Brown", "Garcia", "Miller", "Davis", "Jackson", "Lee", "Robinson", "Young", "King", "White", "Pinkman", "Cook", "Murphy", "Edwards", "Wood", "Blight", "Bacon", "Zion", "Swap", "Mctosh", "Swift", "West", "East"]
 var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
 var notFeelingSick = ["I feel fine.", "I'm feeling good.", "I'm doing fine.", "I'm pretty good.","I'm doing well.", "I'm alright.", "I can't complain.", "I'm not bad.", "I've never been better.", "I don't feel sick.", "I haven't noticed anything out of the ordinary.", "I think I'm ok."]
 var locations = ["Park", "Recreational area", "Rec Room", "Kitchen", "Canteen", "Dormatory", "Gym", "Library", "Common Area", "Meeting Room", "Power & Utility Room", "Utility Room", "Infirmary"]
@@ -39,8 +44,8 @@ var symptoms = ["I'm dizzy. ", "I feel nauseous. ", "I feel generally sick. ", "
 #Most likely randomise character here.
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	DOB = getDOB()
-	patientName = getName()
+	#DOB = getDOB()
+	#patientName = getName()
 	aggression = randi_range(0,2)
 	anxiety = randi_range(0,2)
 	variant = randi_range(0,2)
@@ -54,8 +59,7 @@ func _process(delta: float) -> void:
 
 func setDialogicVars():
 	#set name and DOB in dialogic
-	Dialogic.VAR.Patient.name = patientName
-	Dialogic.VAR.Patient.dob = DOB
+	#Dialogic.VAR.Patient.dob = DOB
 	Dialogic.VAR.Patient.aggression = aggression
 	Dialogic.VAR.Patient.anxiety = anxiety
 	Dialogic.VAR.Patient.variant = variant
@@ -69,13 +73,85 @@ func setDialogicVars():
 
 func getName():
 	var first = randi_range(0, len(firstNames)-1)
-	var last = randi_range(0, len(LastNames)-1)
+	var last = randi_range(0, len(lastNames)-1)
 	var mid = randi_range(0,len(characters)-1)
 	
+	firstName = firstNames[first]
+	midName = characters[mid]
+	lastName = lastNames[last]
+	print(firstName + " " + midName + " " + lastName)
+	
 	if mid == len(characters)-1:
-		return firstNames[first] + " " + LastNames[last]
+		return firstName + " " + lastName
 	else:
-		return firstNames[first] + " " + characters[mid] + " " + LastNames[last] 
+		return firstName + " " + midName + " " + lastName
+
+func confuseName():
+	var fullName = [firstName, midName, lastName]
+	var index = randi_range(0, len(fullName)-1)
+	var new = ""
+	
+	if index == 0:
+		var newIndex = randi_range(0, len(firstNames)-1)
+		new = firstNames[newIndex]
+		if new == fullName[index]:
+			new = firstName[newIndex+1%len(len(firstNames))]
+	if index == 1:
+		var newIndex = randi_range(0, len(characters)-1)
+		new = characters[newIndex]
+		if new == fullName[index]:
+			new = characters[newIndex+1%len(len(characters))]
+	if index == 2:
+		var newIndex = randi_range(0, len(lastNames)-1)
+		new = lastNames[newIndex]
+		if new == fullName[index]:
+			new = lastName[newIndex+1%len(len(lastNames))]
+	fullName[index] = new
+	
+	if fullName[1] == " ":
+		Dialogic.VAR.Patient.name = (fullName[0] + " " + fullName[2])
+	else:
+		Dialogic.VAR.Patient.name = (fullName[0] + " " +  fullName[1] + " " + fullName[2])
+
+func confuseDOB():
+	var index = randi_range(0,2)
+	
+	if index == 0:
+		var new = randi_range(0,31)
+		if new == DOBArray[index]:
+			new = (new+1)%31
+		DOBArray[index] = new
+		
+	if index == 1:
+		var new = randi_range(0,12)
+		if new == DOBArray[index]:
+			new = (new+1)%12
+		DOBArray[index] = new
+		
+	if index == 2:
+		var new = randi_range(2000,2100)
+		if new == DOBArray[index]:
+			new += 1
+		DOBArray[index] = new
+
+	Dialogic.VAR.Patient.dob = DOBtoString()
+
+func DOBtoString():
+	var string = ""
+	var day = DOBArray[0]
+	var month = DOBArray[1]
+	var year = DOBArray[2]
+	
+	if day < 10:
+		string += "0"
+	string += str(day) + "/"
+	
+	if month < 10:
+		string += "0"
+	string += str(month) + "/"
+	string += str(year)
+	
+	return string
 
 #overly complex funcion for determining DOB
 func getDOB():
@@ -104,9 +180,18 @@ func getDOB():
 		string += "0"
 	string += str(month) + "/"
 	
+	DOBArray.append(day)
+	DOBArray.append(month)
+	DOBArray.append(year)
+	
 	return string + str(year)
 
 func setHealthy():
+	#Need to set name here otherwise confuse name won't work
+	patientName = getName()
+	Dialogic.VAR.Patient.name = patientName
+	DOB = getDOB()
+	Dialogic.VAR.Patient.dob = DOB
 	sick = false
 	bloodContaminated = false
 	heartRate = randi_range(60, 100)
@@ -118,6 +203,17 @@ func setHealthy():
 	if anxiety == 1 or aggression == 1:
 		heartRate = randi_range(80, 110)
 	
+	if randi_range(0,100)*anxiety > 50:
+		#make them say the wrong name or DOB if nervous
+		var state = randi()%3
+		if state == 1:
+			confuseName()
+		elif state == 2:
+			confuseDOB()
+		else:
+			confuseName()
+			confuseDOB()
+	
 	#change of high temperature if angry
 	if aggression == 2:
 		temp = randf_range(36, 39)
@@ -128,6 +224,8 @@ func setHealthy():
 	Dialogic.VAR.Patient.feeling = notFeelingSick[randi_range(0, len(notFeelingSick)-1)]
 	Dialogic.VAR.Patient.location = locations[randi_range(0, len(locations)-1)]
 	Dialogic.VAR.Patient.action = actions[randi_range(0, len(actions)-1)]
+
+	confuseDOB()
 
 func generateSymptoms(symptomsRequired):
 	var string = ""
@@ -141,11 +239,17 @@ func generateSymptoms(symptomsRequired):
 	return string
 
 func setSick():
+	#Need to set name here otherwise confuse name won't work
+	patientName = getName()
+	Dialogic.VAR.Patient.name = patientName
+	DOB = getDOB()
+	Dialogic.VAR.Patient.dob = DOB
 	sick = true
 	heartRate = randi_range(60, 120)
 	temp = snapped(randf_range(36, 42),0.01)
 	#50% of false negative
 	bloodContaminated = true if randi()%2 == 1 else false 
+	confused = true if randi()%2 == 1 else false 
 	var symptomsRequired = randi_range(4, 5)
 	
 	var sympCount = 0
@@ -155,6 +259,16 @@ func setSick():
 		sympCount +=1
 	if bloodContaminated:
 		sympCount +=1
+	if confused:
+		sympCount+=1
+		var state = randi()%3
+		if state == 1:
+			confuseName()
+		elif state == 2:
+			confuseDOB()
+		else:
+			confuseName()
+			confuseDOB()
 	
 	symptomsRequired -= sympCount
 	
@@ -163,6 +277,7 @@ func setSick():
 	Dialogic.VAR.Patient.feeling = generateSymptoms(symptomsRequired)
 	Dialogic.VAR.Patient.location = locations[randi_range(0, len(locations)-1)]
 	Dialogic.VAR.Patient.action = actions[randi_range(0, len(actions)-1)]
+
 #update ID based on patient data.
 
 func showTemp():
