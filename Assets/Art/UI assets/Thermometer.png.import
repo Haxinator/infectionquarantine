@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dolnf6igyieyp"
-path="res://.godot/imported/Needle (1).png-8ec656bade6b4b8400b470ab77acfd6d.ctex"
+uid="uid://c3fvvfr8aah2e"
+path="res://.godot/imported/Thermometer.png-0a7bfbc7c5f756ef73d41b2d82b3eabc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/UI assets/Needle (1).png"
-dest_files=["res://.godot/imported/Needle (1).png-8ec656bade6b4b8400b470ab77acfd6d.ctex"]
+source_file="res://Assets/Art/UI assets/Thermometer.png"
+dest_files=["res://.godot/imported/Thermometer.png-0a7bfbc7c5f756ef73d41b2d82b3eabc.ctex"]
 
 [params]
 
