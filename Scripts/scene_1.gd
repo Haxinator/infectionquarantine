@@ -18,9 +18,27 @@ func _ready() -> void:
 	runDiagolue("NurseIntro")
 	infront = nurseCpy
 
+func walkAwayAnimation():
+	#dynamic walking animation using tweens
+		var move = create_tween()
+		#repeat bobbing tween forever
+		var bob = create_tween().set_loops(INF)
+		
+		#move to end of screen
+		var finalpos = get_viewport_rect().size
+		finalpos.x += 200
+		finalpos.y = finalpos.y/2 - 60
+		if infront.name == "Patient":
+			finalpos.y -= 20
+		move.tween_property(infront, "position", finalpos, 1)
+		
+		#create looping bobbing effect
+		bob.tween_property(infront, "position:y", finalpos.y-8, 0.2)
+		bob.tween_property(infront, "position:y", finalpos.y+8, 0.2)
+
 func DialogicSignal(arg: String):
 	if arg == "WalkAway":
-		infront.get_node("AnimationPlayer").play("WalkAway")
+		walkAwayAnimation()
 		seeingPatient = false
 	if arg == "showID":
 		infront.showID()
