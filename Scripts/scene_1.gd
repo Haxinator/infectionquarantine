@@ -13,6 +13,7 @@ func _ready() -> void:
 	var nurseCpy = nurse.instantiate()
 	Dialogic.signal_event.connect(DialogicSignal)
 	nurseCpy.position = get_viewport_rect().size/2
+	nurseCpy.position.y -= 60
 	add_child(nurseCpy)
 	runDiagolue("NurseIntro")
 	infront = nurseCpy
@@ -34,6 +35,7 @@ func _process(_delta: float) -> void:
 		infront = patientCpy
 		patientCpy.visible = true
 		patientCpy.position = get_viewport_rect().size/2
+		patientCpy.position.y -= 80
 		#patientCpy.get_node("AnimationPlayer").play("WalkIn")
 		
 		if randi() % 2 == 0:
