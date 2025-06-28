@@ -3,14 +3,14 @@
 	jump 
 - Can I see your ID?
 	elif {Patient.anxiety} == 1:
-		Patient: {Patient.anxious1}
+		Patient: Why is something wrong?
 		You: It's just protocol.
 	[signal arg="showID"]
 	- Name and date of birth please.
 		if {Patient.aggression} == 0:
 			Patient: My name is {Patient.name} and I was born on {Patient.dob}.
 		elif {Patient.aggression} == 1:
-			Patient: {Patient.aggressive1}
+			Patient: Why do I need to tell you my name and date of birth? It's already on my ID card.
 			You: It's just procedure
 			Patient: ...
 			Patient: {Patient.name}, {Patient.dob}
@@ -28,8 +28,8 @@
 					Patient: I already told you.
 					jump askID
 				else:
-					Patient: I don't trust you... you'll kill me like the rest.
-					- I don't want anyone to die
+					Patient: You'll kill me like the rest.
+					- I won't
 						You: I don't want anyone to die. Please let me help you.
 						Patient: ...
 						set {Patient.chance} += range(0,20).pick_random()
@@ -87,7 +87,7 @@
 			if {Patient.chance} > 50.0:
 				Patient: Alright... I see your point. {Patient.feeling}
 			else:
-				Patient: {Patient.aggressive2}
+				Patient: Yes people are dying. What are you doing to help them? Playing judge, jury and executioner?
 				You: Forget it...
 		- Fine.
 			jump 
