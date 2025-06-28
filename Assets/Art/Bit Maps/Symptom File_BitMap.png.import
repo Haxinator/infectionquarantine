@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dqb00q327hx0c"
+path="res://.godot/imported/Symptom File_BitMap.png-4c27cfe36a99ad2f774cbc9880150b88.res"
+
+[deps]
+
+source_file="res://Assets/Art/Bit Maps/Symptom File_BitMap.png"
+dest_files=["res://.godot/imported/Symptom File_BitMap.png-4c27cfe36a99ad2f774cbc9880150b88.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

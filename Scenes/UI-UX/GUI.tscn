@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dphb3n2u8gxk8"]
+[gd_scene load_steps=14 format=3 uid="uid://dphb3n2u8gxk8"]
 
 [ext_resource type="Script" uid="uid://hcldmt5777ki" path="res://Scripts/gui.gd" id="1_b1cy7"]
-[ext_resource type="Texture2D" uid="uid://brqjfexf6l818" path="res://Assets/Art/Placeholder2.PNG" id="1_t80um"]
 [ext_resource type="Texture2D" uid="uid://dvsxc38p14h03" path="res://Assets/Art/Symptoms-Folder-Placeholder.PNG" id="2_gxxt3"]
+[ext_resource type="Texture2D" uid="uid://chhgtio7yl5bt" path="res://Assets/Art/Infection Assets/Room.png" id="3_s0i4c"]
+[ext_resource type="Texture2D" uid="uid://b0b4f70prba5m" path="res://Assets/Art/Infection Assets/Computer.png" id="4_5arer"]
+[ext_resource type="Texture2D" uid="uid://c3bov2oa6svte" path="res://Assets/Art/Infection Assets/IV Drip.png" id="4_knnk2"]
+[ext_resource type="Texture2D" uid="uid://bnvnocbgru5ei" path="res://Assets/Art/Infection Assets/Table.png" id="5_qalk2"]
+[ext_resource type="Texture2D" uid="uid://dhqx0pvlcgu1c" path="res://Assets/Art/Infection Assets/Table Assets.png" id="6_u1lui"]
+[ext_resource type="Texture2D" uid="uid://mxkn1kamxyod" path="res://Assets/Art/Infection Assets/Screen Left.png" id="7_ae3yb"]
+[ext_resource type="Texture2D" uid="uid://dvq46nacwq65r" path="res://Assets/Art/Infection Assets/Screen Right.png" id="8_qalk2"]
+[ext_resource type="BitMap" uid="uid://bbnn61v8kocxf" path="res://Assets/Art/Bit Maps/Computer_BitMap.png" id="10_atngs"]
+[ext_resource type="Texture2D" uid="uid://y8vyfq67ox7f" path="res://Assets/Art/Infection Assets/Symptom File.png" id="10_u1lui"]
+[ext_resource type="BitMap" uid="uid://dqb00q327hx0c" path="res://Assets/Art/Bit Maps/Symptom File_BitMap.png" id="12_bh04i"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_t80um"]
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_gxxt3"]
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atngs"]
+size = Vector2(896, 712)
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -23,106 +29,117 @@ script = ExtResource("1_b1cy7")
 
 [node name="Folder Pop Up" type="Sprite2D" parent="."]
 visible = false
-z_index = 1
-position = Vector2(576, 324)
-scale = Vector2(0.5, 0.5)
+z_index = 2
+position = Vector2(960, 540)
 texture = ExtResource("2_gxxt3")
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
+[node name="Area2D" type="Area2D" parent="Folder Pop Up"]
 
-[node name="Scene" type="Sprite2D" parent="Background"]
-position = Vector2(230.4, 129.6)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_t80um")
-offset = Vector2(576, 324)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Folder Pop Up/Area2D"]
+position = Vector2(-40, -56)
+shape = SubResource("RectangleShape2D_atngs")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1
+z_as_relative = false
+
+[node name="Room" type="Sprite2D" parent="Background"]
+z_index = -1
+z_as_relative = false
+position = Vector2(960, 540)
+texture = ExtResource("3_s0i4c")
+
+[node name="IV Drip" type="Sprite2D" parent="Background"]
+z_index = -1
+z_as_relative = false
+position = Vector2(960, 540)
+texture = ExtResource("4_knnk2")
+
+[node name="Table" type="Sprite2D" parent="Background"]
+z_as_relative = false
+position = Vector2(960, 540)
+texture = ExtResource("5_qalk2")
+
+[node name="Table Assets" type="Sprite2D" parent="Background"]
+z_as_relative = false
+position = Vector2(960, 540)
+texture = ExtResource("6_u1lui")
 
 [node name="Clickable Areas" type="Control" parent="."]
+z_as_relative = false
 layout_mode = 2
 anchors_preset = 0
 offset_top = 648.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
+[node name="Screen Left" type="TextureButton" parent="Clickable Areas"]
+z_index = -1
+z_as_relative = false
+layout_mode = 0
+offset_top = -648.0
+offset_right = 1920.0
+offset_bottom = 432.0
+texture_normal = ExtResource("7_ae3yb")
+
+[node name="Screen Right" type="TextureButton" parent="Clickable Areas"]
+z_index = -1
+z_as_relative = false
+layout_mode = 0
+offset_top = -648.0
+offset_right = 1920.0
+offset_bottom = 432.0
+texture_normal = ExtResource("8_qalk2")
+
 [node name="Computer" type="TextureButton" parent="Clickable Areas"]
+z_as_relative = false
 layout_mode = 0
-offset_left = 923.0
-offset_top = -374.0
-offset_right = 1140.0
-offset_bottom = -126.0
+offset_top = -648.0
+offset_right = 1920.0
+offset_bottom = 432.0
+texture_normal = ExtResource("4_5arer")
+texture_click_mask = ExtResource("10_atngs")
+stretch_mode = 0
 
-[node name="Label Placeholder" type="Label" parent="Clickable Areas/Computer"]
+[node name="Symptoms File" type="TextureButton" parent="Clickable Areas"]
+z_as_relative = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Computer
-"
-label_settings = SubResource("LabelSettings_t80um")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Symptoms Folder" type="TextureButton" parent="Clickable Areas"]
-layout_mode = 0
-offset_left = 310.0
-offset_top = -190.0
-offset_right = 552.0
-offset_bottom = -12.0
+offset_top = -648.0
+offset_right = 1920.0
+offset_bottom = 432.0
 toggle_mode = true
-
-[node name="Label Placeholder" type="Label" parent="Clickable Areas/Symptoms Folder"]
-layout_mode = 0
-offset_right = 82.0
-offset_bottom = 23.0
-text = "Symptoms"
-label_settings = SubResource("LabelSettings_gxxt3")
+texture_normal = ExtResource("10_u1lui")
+texture_click_mask = ExtResource("12_bh04i")
 
 [node name="Thermometer" type="TextureButton" parent="Clickable Areas"]
+visible = false
+z_as_relative = false
 layout_mode = 0
-offset_left = 583.0
-offset_top = -137.0
-offset_right = 679.0
-offset_bottom = -65.0
+offset_top = -648.0
+offset_right = 1920.0
+offset_bottom = 432.0
 toggle_mode = true
-
-[node name="Label Placeholder" type="Label" parent="Clickable Areas/Thermometer"]
-layout_mode = 0
-offset_right = 108.0
-offset_bottom = 23.0
-text = "Thermometer"
-label_settings = SubResource("LabelSettings_gxxt3")
 
 [node name="Stethoscope" type="TextureButton" parent="Clickable Areas"]
+visible = false
+z_as_relative = false
 layout_mode = 0
-offset_left = 690.0
-offset_top = -138.0
-offset_right = 794.0
-offset_bottom = -64.0
+offset_top = -648.0
+offset_right = 1920.0
+offset_bottom = 432.0
 toggle_mode = true
-
-[node name="Label Placeholder" type="Label" parent="Clickable Areas/Stethoscope"]
-layout_mode = 0
-offset_right = 96.0
-offset_bottom = 23.0
-text = "Stethoscope"
-label_settings = SubResource("LabelSettings_gxxt3")
 
 [node name="Syringe" type="TextureButton" parent="Clickable Areas"]
+visible = false
+z_as_relative = false
 layout_mode = 0
-offset_left = 802.0
-offset_top = -136.0
-offset_right = 906.0
-offset_bottom = -66.0
+offset_top = -648.0
+offset_right = 1920.0
+offset_bottom = 432.0
 toggle_mode = true
 
-[node name="Label Placeholder" type="Label" parent="Clickable Areas/Syringe"]
-layout_mode = 0
-offset_right = 58.0
-offset_bottom = 23.0
-text = "Syringe"
-label_settings = SubResource("LabelSettings_gxxt3")
-
 [connection signal="pressed" from="Clickable Areas/Computer" to="." method="_on_computer_pressed"]
-[connection signal="toggled" from="Clickable Areas/Symptoms Folder" to="." method="_on_symptoms_folder_toggled"]
+[connection signal="toggled" from="Clickable Areas/Symptoms File" to="." method="_on_symptoms_folder_toggled"]
 [connection signal="pressed" from="Clickable Areas/Thermometer" to="." method="_on_thermometer_pressed"]
 [connection signal="pressed" from="Clickable Areas/Stethoscope" to="." method="_on_stethoscope_pressed"]
 [connection signal="pressed" from="Clickable Areas/Syringe" to="." method="_on_syringe_pressed"]
