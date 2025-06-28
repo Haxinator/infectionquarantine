@@ -95,17 +95,17 @@ func confuseName():
 		var newIndex = randi_range(0, len(firstNames)-1)
 		new = firstNames[newIndex]
 		if new == fullName[index]:
-			new = firstName[newIndex+1%len(len(firstNames))]
+			new = firstName[(newIndex+1) % len(firstNames)]
 	if index == 1:
 		var newIndex = randi_range(0, len(characters)-1)
 		new = characters[newIndex]
 		if new == fullName[index]:
-			new = characters[newIndex+1%len(len(characters))]
+			new = characters[(newIndex+1) % len(characters)]
 	if index == 2:
 		var newIndex = randi_range(0, len(lastNames)-1)
 		new = lastNames[newIndex]
 		if new == fullName[index]:
-			new = lastName[newIndex+1%len(len(lastNames))]
+			new = lastName[(newIndex+1) % len(lastNames)]
 	fullName[index] = new
 	
 	if fullName[1] == " ":
@@ -318,11 +318,12 @@ func removeLabel():
 		label.queue_free()
 
 func showID():
-	var id = load("res://dialog/IDCards/layered_portrait_id1.tscn")
+	#var id = load("res://dialog/IDCards/layered_portrait_id1.tscn")
+	var id = load("res://Scenes/Draggable/IDCard.tscn")
 	var idCpy = id.instantiate()
 	ID = idCpy
-	idCpy.get_node("properties/dob").text = DOB
-	idCpy.get_node("properties/name").text = patientName
+	idCpy.get_node("dob").text = DOB
+	idCpy.get_node("name").text = patientName
 	idCpy.position = get_viewport_rect().size / 2
 	idCpy.position.x -= 400
 	

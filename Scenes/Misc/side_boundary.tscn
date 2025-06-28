@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://crrwxrg5xpx1x"]
+
+[ext_resource type="PackedScene" uid="uid://dgtwkytd83vli" path="res://Scenes/UI-UX/Boundary.tscn" id="1_da2h5"]
+
+[node name="side_boundary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Boundary" parent="." instance=ExtResource("1_da2h5")]
+rotation = 1.5708
+scale = Vector2(0.56, 1.92)

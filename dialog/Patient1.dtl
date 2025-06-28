@@ -49,7 +49,7 @@
 					set {Patient.wasConvinced} = true
 					jump askID
 			- Fine.
-	[signal arg="hideID"]
+	[signal arg="usedtobehideid"]
 	jump 
 - How are you feeling?
 	if {Patient.aggression} == 0:
