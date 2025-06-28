@@ -6,4 +6,4 @@ Nurse: Hello Doctor, the patients are lined up and ready for review. Shall I cal
 	Nurse: You must check each patient to ensure they don't contain the pathogen. The symtops of which can be found in the folder placed on your desk.
 	Nurse: I've placed all the tools you require on your desk in front of you.
 	Nurse: If you find in your examination they contain the pathogen, note it down and we'll take care of the rest.
-[signal arg="WalkAway"]
+[signal arg="WalkQuarantine"]

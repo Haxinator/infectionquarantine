@@ -1,39 +1,47 @@
 extends Node2D
 
 signal dialogueStart
+
+#Patient Info
 var patientName: String = ""
 var DOB: String = "00/00/00"
 var temp: float = -1
 var heartRate : int = -1
+var bloodContaminated = false
 var isSick: bool = false
 var patient: String = ""
 var ID = null
+var label = null
+var sick = false
 
+#patient control params
 var aggression = -1
 var anxiety = -1
 var variant = -1
 
+#Portraits
 const TOTAL_HEALTHY = 2
 const TOTAL_SICK = 1
+
+#Dialogue
 var firstNames = ["Frankie", "Jackie", "Brodie", "Charlie", "Ash", "Robin", "Blake", "Jett", "Sage", "Ridley", "Spencer", "Basil", "Sunny", "Tiger", "Katie", "Stevie", "Andie", "Billie", "Jessie", "Ollie", "Kris", "Kim", "Alex", "Bailey", "Bellamy", "Adrian", "Aubrey", "Bryce", "Francis", "Jean", "London", "Paris", "Pat", "Remy", "Ricky", "Rumi", "Sidney", "Terry", "Kanye", "Taylor"]
 var LastNames = ["Quinn", "Alexander", "Griffin", "Hope", "Cassidy", "Jenkins", "Perry", "Smith", "Johnson", "Brown", "Garcia", "Miller", "Davis", "Jackson", "Lee", "Robinson", "Young", "King", "White", "Pinkman", "Cook", "Murphy", "Edwards", "Wood", "Blight", "Bacon", "Zion", "Swap", "Mctosh", "Swift", "West", "East"]
 var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
-var notFeelingSick = ["I feel fine.", "I'm feeling good.", "I'm doing fine.", "Pretty good.","I'm doing well.", "I'm alright.", "Can't complain.", "Not bad.", "Never better.", "I don't feel sick.", "I haven't noticed anything.", "I think I'm ok."]
+var notFeelingSick = ["I feel fine.", "I'm feeling good.", "I'm doing fine.", "I'm pretty good.","I'm doing well.", "I'm alright.", "I can't complain.", "I'm not bad.", "I've never been better.", "I don't feel sick.", "I haven't noticed anything out of the ordinary.", "I think I'm ok."]
 var locations = ["Park", "Recreational area", "Rec Room", "Kitchen", "Canteen", "Dormatory", "Gym", "Library", "Common Area", "Meeting Room", "Power & Utility Room", "Utility Room", "Infirmary"]
 var feelingSick = ["I feel like throwing up.", "I feel dizzy.", "I feel sick.", "I haven't been sleeping.", "I haven't been sleeping, I've been up all night coughing."]
 var actions = ["I was working in the", "I was walking around the", "I was just hanging out in the", "I was hanging out with my friends in the", "I've was reading a book in the", "I was in the"]
-var aggressive1 = ["Why do I need to tell you my name and date of birth? It's already on my ID card.", "This seems excessive.", "..." ,"Is this really necessary?", "I have better things I could be doing with my time."]
+var aggressive1 = ["Why do I need to tell you my name and date of birth? It's already on my ID card.", "This seems excessive.", "..." ,"Is this really necessary?", "Seriously?", "I have better things I could be doing with my time."]
 var aggressive2 = ["Yes people are dying. What are you doing to help them? Playing judge, jury and executioner?", "You'll kill me like the rest.", "I want nothing to do with you.", "You're nothing but a murder.", "Stop talking to me.", "Get away from me."]
-var anxious1 = ["Why is something wrong?", "Is something wrong?", "Why are you looking at me like that?", "Did I do something wrong?"]
+var anxious1 = ["Why is something wrong?", "Is something wrong?", "What's the matter?", "Did I do something wrong?"]
 var anxious2 = ["Please, please...", "What is it? What's wrong with me?", "I'm not going to die right?", "No, no, no... this can't be happening.", "Please don't let me die."]
-
+var symptoms = ["I'm dizzy. ", "I feel nauseous. ", "I feel generally sick. ", "I have aches and pains all over. ", "I haven't been sleeping. ", "I've been violently coughing. ", "Sometimes I feel I'm out of breath. ", "I've been getting hot and cold flushes. ", "I can't cool down. ", "I feel weird. "]
 #Most likely randomise character here.
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	DOB = getDOB()
 	patientName = getName()
 	aggression = randi_range(0,2)
-	aggression = 2
 	anxiety = randi_range(0,2)
 	variant = randi_range(0,2)
 	
@@ -99,22 +107,101 @@ func getDOB():
 	return string + str(year)
 
 func setHealthy():
+	sick = false
+	bloodContaminated = false
 	heartRate = randi_range(60, 100)
 	temp = randf_range(36, 37.9)
+	
+	#increase heart rate if angry or anxious
+	if anxiety == 2 or aggression == 2:
+		heartRate = randi_range(90, 120)
+	if anxiety == 1 or aggression == 1:
+		heartRate = randi_range(80, 110)
+	
+	#change of high temperature if angry
+	if aggression == 2:
+		temp = randf_range(36, 39)
+	temp = snapped(temp, 0.01)
+	
 	patient = "Patient" + str(randi_range(1, TOTAL_HEALTHY))
 	get_node("Sprite2D").texture = load("res://Assets/Art/" + patient + ".PNG")
 	Dialogic.VAR.Patient.feeling = notFeelingSick[randi_range(0, len(notFeelingSick)-1)]
 	Dialogic.VAR.Patient.location = locations[randi_range(0, len(locations)-1)]
 	Dialogic.VAR.Patient.action = actions[randi_range(0, len(actions)-1)]
 
+func generateSymptoms(symptomsRequired):
+	var string = ""
+	var indices = []
+	
+	symptoms.shuffle() #array is small enough it shouldn't matter.
+	
+	for i in range(symptomsRequired):
+		string += symptoms[i]
+	
+	return string
+
 func setSick():
-	heartRate = randi_range(60, 100)
-	temp = randf_range(38, 42)
+	sick = true
+	heartRate = randi_range(60, 120)
+	temp = snapped(randf_range(36, 42),0.01)
+	#50% of false negative
+	bloodContaminated = true if randi()%2 == 1 else false 
+	var symptomsRequired = randi_range(4, 5)
+	
+	var sympCount = 0
+	if temp >= 38:
+		sympCount +=1
+	if heartRate >= 100:
+		sympCount +=1
+	if bloodContaminated:
+		sympCount +=1
+	
+	symptomsRequired -= sympCount
+	
 	#dialogue = "PatientSick" + str(randi_range(1, TOTAL_SICK))
-	Dialogic.VAR.Patient.feeling = feelingSick[randi_range(0, len(feelingSick)-1)]
+	#Dialogic.VAR.Patient.feeling = feelingSick[randi_range(0, len(feelingSick)-1)]
+	Dialogic.VAR.Patient.feeling = generateSymptoms(symptomsRequired)
 	Dialogic.VAR.Patient.location = locations[randi_range(0, len(locations)-1)]
 	Dialogic.VAR.Patient.action = actions[randi_range(0, len(actions)-1)]
 #update ID based on patient data.
+
+func showTemp():
+	removeLabel()
+	
+	label = load("res://Scenes/Misc/TemperatureLabel.tscn")
+	label = label.instantiate()
+	label.get_node("Label").text = "temp: " + str(temp)
+	label.position = get_viewport_rect().size/2
+	label.position.x += 300
+	
+	get_tree().get_root().add_child(label)
+
+func showBlood():
+	removeLabel()
+	
+	label = load("res://Scenes/Misc/BloodLabel.tscn")
+	label = label.instantiate()
+	label.get_node("Label").text = "Blood Contaminated: " + str(bloodContaminated)
+	label.position = get_viewport_rect().size/2
+	label.position.x += 300
+	
+	get_tree().get_root().add_child(label)
+
+func showHeartRate():
+	removeLabel()
+	
+	label = load("res://Scenes/Misc/HeartRateLabel.tscn")
+	label = label.instantiate()
+	label.get_node("Label").text = "BPM: " + str(heartRate)
+	label.position = get_viewport_rect().size/2
+	label.position.x += 300
+	
+	get_tree().get_root().add_child(label)
+
+func removeLabel():
+	if label != null:
+		label.queue_free()
+
 func showID():
 	var id = load("res://dialog/IDCards/layered_portrait_id1.tscn")
 	var idCpy = id.instantiate()
@@ -141,3 +228,4 @@ func runDiagolue(dialogue: String):
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+	removeLabel()

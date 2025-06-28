@@ -1,3 +1,12 @@
+- Check
+	- Heart Rate
+		[signal arg="HR"]
+	- Blood
+		[signal arg="BL"]
+	- Temperature
+		[signal arg="temp"]
+	- None
+		[signal arg="hide"]
 - Where were you today?
 	Patient: {Patient.action} {Patient.location}.
 	jump 
@@ -92,6 +101,8 @@
 		- Fine.
 			jump 
 	jump 
-- Go away
-	[signal arg="WalkAway"]
+- Go to Quarantine
+	[signal arg="WalkQuarantine"]
+- Do back to dorms
+	[signal arg="WalkDorm"]
 - That's all

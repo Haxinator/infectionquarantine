@@ -18,7 +18,28 @@ func _ready() -> void:
 	runDiagolue("NurseIntro")
 	infront = nurseCpy
 
-func walkAwayAnimation():
+func walkLeftAnimation():
+	#dynamic walking animation using tweens
+		var move = create_tween()
+		#repeat bobbing tween forever
+		var bob = create_tween().set_loops(INF)
+		
+		#move to end of screen
+		var finalpos = get_viewport_rect().size
+		finalpos.x = -200
+		finalpos.y = finalpos.y/2 - 60
+		if infront.name == "Patient":
+			finalpos.y -= 20
+		move.tween_property(infront, "position", finalpos, 1)
+		
+		#change position of off screen detector
+		infront.get_node("VisibleOnScreenNotifier2D").position.x += 320
+		
+		#create looping bobbing effect
+		bob.tween_property(infront, "position:y", finalpos.y-8, 0.2)
+		bob.tween_property(infront, "position:y", finalpos.y+8, 0.2)
+
+func walkRightAnimation():
 	#dynamic walking animation using tweens
 		var move = create_tween()
 		#repeat bobbing tween forever
@@ -37,13 +58,24 @@ func walkAwayAnimation():
 		bob.tween_property(infront, "position:y", finalpos.y+8, 0.2)
 
 func DialogicSignal(arg: String):
-	if arg == "WalkAway":
-		walkAwayAnimation()
+	if arg == "WalkQuarantine":
+		walkRightAnimation()
+		seeingPatient = false
+	if arg == "WalkDorm":
+		walkLeftAnimation()
 		seeingPatient = false
 	if arg == "showID":
 		infront.showID()
 	if arg == "hideID":
 		infront.removeID()
+	if arg == "HR":
+		infront.showHeartRate()
+	if arg == "BL":
+		infront.showBlood()
+	if arg == "temp":
+		infront.showTemp()
+	if arg == "hide":
+		infront.removeLabel()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
