@@ -2,6 +2,7 @@ extends RigidBody2D
 
 var dragging = false
 var of
+var outOfView = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,8 +11,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if dragging:
+	if dragging and Input.is_action_pressed("left_mouse"):
 		position = get_viewport().get_mouse_position() - of
+	else:
+		dragging = false
+		freeze = false
+		if outOfView:
+			position = get_viewport_rect().size/2
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -22,3 +28,11 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	elif event is InputEventMouseButton and not event.pressed:
 		freeze = false
 		dragging = false
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	outOfView = true
+
+
+func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
+	outOfView = false
