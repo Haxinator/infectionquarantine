@@ -18,9 +18,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		freeze = true
 		dragging = true
 		of = get_viewport().get_mouse_position() - position
-		print("dragging")
 		
 	elif event is InputEventMouseButton and not event.pressed:
 		freeze = false
 		dragging = false
-		print("released")
