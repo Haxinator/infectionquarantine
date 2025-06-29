@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dphb3n2u8gxk8"]
 
 [ext_resource type="Script" uid="uid://hcldmt5777ki" path="res://Scripts/gui.gd" id="1_b1cy7"]
-[ext_resource type="Texture2D" uid="uid://dvsxc38p14h03" path="res://Assets/Art/Symptoms-Folder-Placeholder.PNG" id="2_gxxt3"]
+[ext_resource type="Texture2D" uid="uid://dgk0k18d8wob6" path="res://Assets/Art/UI assets/Symptom UI.png" id="2_atngs"]
 [ext_resource type="Texture2D" uid="uid://chhgtio7yl5bt" path="res://Assets/Art/Infection Assets/Room.png" id="3_s0i4c"]
 [ext_resource type="Texture2D" uid="uid://b0b4f70prba5m" path="res://Assets/Art/Infection Assets/Computer.png" id="4_5arer"]
 [ext_resource type="Texture2D" uid="uid://c3bov2oa6svte" path="res://Assets/Art/Infection Assets/IV Drip.png" id="4_knnk2"]
@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://dhqx0pvlcgu1c" path="res://Assets/Art/Infection Assets/Table Assets.png" id="6_u1lui"]
 [ext_resource type="Texture2D" uid="uid://mxkn1kamxyod" path="res://Assets/Art/Infection Assets/Screen Left.png" id="7_ae3yb"]
 [ext_resource type="Texture2D" uid="uid://dvq46nacwq65r" path="res://Assets/Art/Infection Assets/Screen Right.png" id="8_qalk2"]
-[ext_resource type="BitMap" uid="uid://bbnn61v8kocxf" path="res://Assets/Art/Bit Maps/Computer_BitMap.png" id="10_atngs"]
-[ext_resource type="Texture2D" uid="uid://y8vyfq67ox7f" path="res://Assets/Art/Infection Assets/Symptom File.png" id="10_u1lui"]
-[ext_resource type="BitMap" uid="uid://dqb00q327hx0c" path="res://Assets/Art/Bit Maps/Symptom File_BitMap.png" id="12_bh04i"]
+[ext_resource type="Texture2D" uid="uid://ucmmc1rxcfjo" path="res://Assets/Art/Infection Assets/Symptom File.png" id="10_u1lui"]
+[ext_resource type="Texture2D" uid="uid://dw6x0tvff1ift" path="res://Assets/Art/UI assets/Healthy UI.png" id="11_lisox"]
+[ext_resource type="Texture2D" uid="uid://bp2cokb0o622o" path="res://Assets/Art/UI assets/Quarantine UI.png" id="12_1riyv"]
 [ext_resource type="PackedScene" uid="uid://crrwxrg5xpx1x" path="res://Scenes/Misc/side_boundary.tscn" id="14_1riyv"]
 [ext_resource type="PackedScene" uid="uid://c4j2sdk605171" path="res://Scenes/UI-UX/top_bottom_boundary.tscn" id="14_lisox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atngs"]
-size = Vector2(896, 712)
+size = Vector2(976, 712)
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -33,12 +33,12 @@ metadata/_edit_use_anchors_ = true
 visible = false
 z_index = 2
 position = Vector2(960, 540)
-texture = ExtResource("2_gxxt3")
+texture = ExtResource("2_atngs")
 
 [node name="Area2D" type="Area2D" parent="Folder Pop Up"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Folder Pop Up/Area2D"]
-position = Vector2(-40, -56)
+position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_atngs")
 
 [node name="Background2" type="Control" parent="."]
@@ -60,6 +60,30 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_s0i4c")
+expand_mode = 3
+
+[node name="Screen Left" type="TextureRect" parent="Background2"]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_ae3yb")
+expand_mode = 3
+
+[node name="Screen Right" type="TextureRect" parent="Background2"]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_qalk2")
 expand_mode = 3
 
 [node name="IV Drip" type="TextureRect" parent="Background2"]
@@ -97,7 +121,6 @@ texture = ExtResource("6_u1lui")
 expand_mode = 3
 
 [node name="Clickable Areas" type="Control" parent="."]
-visible = false
 z_as_relative = false
 layout_mode = 2
 anchors_preset = 0
@@ -105,44 +128,48 @@ offset_top = 648.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Screen Left" type="TextureButton" parent="Clickable Areas"]
-z_index = -1
-z_as_relative = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.66667
-offset_top = -648.0
-offset_bottom = 432.0
-texture_normal = ExtResource("7_ae3yb")
-
-[node name="Screen Right" type="TextureButton" parent="Clickable Areas"]
-z_index = -1
-z_as_relative = false
-layout_mode = 0
-offset_top = -648.0
-offset_right = 1920.0
-offset_bottom = 432.0
-texture_normal = ExtResource("8_qalk2")
-
 [node name="Computer" type="TextureButton" parent="Clickable Areas"]
 z_as_relative = false
 layout_mode = 0
-offset_top = -648.0
-offset_right = 1920.0
-offset_bottom = 432.0
+offset_left = 1360.0
+offset_top = -184.0
+offset_right = 1916.0
+offset_bottom = 359.0
 texture_normal = ExtResource("4_5arer")
-texture_click_mask = ExtResource("10_atngs")
 stretch_mode = 0
 
 [node name="Symptoms File" type="TextureButton" parent="Clickable Areas"]
 z_as_relative = false
 layout_mode = 0
-offset_top = -648.0
-offset_right = 1920.0
-offset_bottom = 432.0
+offset_left = 568.0
+offset_top = 120.0
+offset_right = 997.0
+offset_bottom = 412.0
 toggle_mode = true
 texture_normal = ExtResource("10_u1lui")
-texture_click_mask = ExtResource("12_bh04i")
+stretch_mode = 0
+
+[node name="Healthy UI" type="TextureButton" parent="Clickable Areas"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 544.0
+offset_top = -504.0
+offset_right = 710.0
+offset_bottom = -168.0
+toggle_mode = true
+texture_normal = ExtResource("11_lisox")
+stretch_mode = 0
+
+[node name="Quarantine UI" type="TextureButton" parent="Clickable Areas"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 1128.0
+offset_top = -520.0
+offset_right = 1294.0
+offset_bottom = -184.0
+toggle_mode = true
+texture_normal = ExtResource("12_1riyv")
+stretch_mode = 0
 
 [node name="Thermometer" type="TextureButton" parent="Clickable Areas"]
 visible = false
@@ -222,6 +249,8 @@ scale = Vector2(6.28, 1)
 
 [connection signal="pressed" from="Clickable Areas/Computer" to="." method="_on_computer_pressed"]
 [connection signal="toggled" from="Clickable Areas/Symptoms File" to="." method="_on_symptoms_folder_toggled"]
+[connection signal="pressed" from="Clickable Areas/Healthy UI" to="." method="_on_healthy_ui_pressed"]
+[connection signal="pressed" from="Clickable Areas/Quarantine UI" to="." method="_on_quarantine_ui_pressed"]
 [connection signal="pressed" from="Clickable Areas/Thermometer" to="." method="_on_thermometer_pressed"]
 [connection signal="pressed" from="Clickable Areas/Stethoscope" to="." method="_on_stethoscope_pressed"]
 [connection signal="pressed" from="Clickable Areas/Syringe" to="." method="_on_syringe_pressed"]

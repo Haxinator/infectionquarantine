@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_computer_pressed() -> void:
-	print("Computer Pressed!")
+	print("TEST: Computer Pressed")
 
 
 func _on_symptoms_folder_toggled(toggled_on: bool) -> void:
@@ -35,3 +35,11 @@ func _on_stethoscope_pressed() -> void:
 
 func _on_syringe_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_healthy_ui_pressed() -> void:
+	print("TEST: Send Left")
+
+
+func _on_quarantine_ui_pressed() -> void:
+	print("TEST: Send Right")
