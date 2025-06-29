@@ -59,9 +59,12 @@ func walkRightAnimation():
 
 func DialogicSignal(arg: String):
 	if arg == "WalkQuarantine":
+		if infront.name != "Nurse":
+			infront.removeID()
 		walkRightAnimation()
 		seeingPatient = false
 	if arg == "WalkDorm":
+		infront.removeID()
 		walkLeftAnimation()
 		seeingPatient = false
 	if arg == "showID":
@@ -94,6 +97,7 @@ func _process(_delta: float) -> void:
 			patientCpy.setSick()
 		
 		add_child(patientCpy)
+		patientCpy.showID()
 
 func runDiagolue(dialogue: String):
 	dialogueStart.emit()

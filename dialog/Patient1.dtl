@@ -14,7 +14,7 @@
 	elif {Patient.anxiety} == 1:
 		Patient: {Patient.anxious1}
 		You: It's just protocol.
-	[signal arg="showID"]
+	[signal arg="usedtobeshowID"]
 	- Name and date of birth please.
 		if {Patient.aggression} == 0:
 			Patient: My name is {Patient.name} and I was born on {Patient.dob}.
@@ -29,6 +29,7 @@
 			- Please
 				if {Patient.chance} > 50.0:
 					Patient: Fine, my name is {Patient.name} and my date of birth is {Patient.dob}
+					set {Patient.aggression} = 2.0
 				else:
 					Patient: I said no.
 					jump askID
@@ -95,6 +96,7 @@
 		- People are dying. I must know.
 			if {Patient.chance} > 50.0:
 				Patient: Alright... I see your point. {Patient.feeling}
+				set {Patient.aggression} = 2.0
 			else:
 				Patient: {Patient.aggressive2}
 				You: Forget it...

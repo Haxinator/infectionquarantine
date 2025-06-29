@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dphb3n2u8gxk8"]
+[gd_scene load_steps=17 format=3 uid="uid://dphb3n2u8gxk8"]
 
 [ext_resource type="Script" uid="uid://hcldmt5777ki" path="res://Scripts/gui.gd" id="1_b1cy7"]
 [ext_resource type="Texture2D" uid="uid://dgk0k18d8wob6" path="res://Assets/Art/UI assets/Symptom UI.png" id="2_atngs"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dhqx0pvlcgu1c" path="res://Assets/Art/Infection Assets/Table Assets.png" id="6_u1lui"]
 [ext_resource type="Texture2D" uid="uid://mxkn1kamxyod" path="res://Assets/Art/Infection Assets/Screen Left.png" id="7_ae3yb"]
 [ext_resource type="Texture2D" uid="uid://dvq46nacwq65r" path="res://Assets/Art/Infection Assets/Screen Right.png" id="8_qalk2"]
+[ext_resource type="Script" uid="uid://e3igboxx5e4w" path="res://Scenes/UI-UX/clickable_areas.gd" id="9_1riyv"]
 [ext_resource type="Texture2D" uid="uid://ucmmc1rxcfjo" path="res://Assets/Art/Infection Assets/Symptom File.png" id="10_u1lui"]
 [ext_resource type="Texture2D" uid="uid://dw6x0tvff1ift" path="res://Assets/Art/UI assets/Healthy UI.png" id="11_lisox"]
 [ext_resource type="Texture2D" uid="uid://bp2cokb0o622o" path="res://Assets/Art/UI assets/Quarantine UI.png" id="12_1riyv"]
@@ -124,9 +125,11 @@ expand_mode = 3
 z_as_relative = false
 layout_mode = 2
 anchors_preset = 0
-offset_top = 648.0
 offset_right = 1152.0
-offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_1riyv")
 
 [node name="Computer" type="TextureButton" parent="Clickable Areas"]
 z_as_relative = false
@@ -135,6 +138,7 @@ offset_left = 1360.0
 offset_top = -184.0
 offset_right = 1916.0
 offset_bottom = 359.0
+scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("4_5arer")
 stretch_mode = 0
 
@@ -145,6 +149,7 @@ offset_left = 568.0
 offset_top = 120.0
 offset_right = 997.0
 offset_bottom = 412.0
+scale = Vector2(0.6, 0.6)
 toggle_mode = true
 texture_normal = ExtResource("10_u1lui")
 stretch_mode = 0
@@ -156,6 +161,7 @@ offset_left = 544.0
 offset_top = -504.0
 offset_right = 710.0
 offset_bottom = -168.0
+scale = Vector2(0.8, 0.8)
 toggle_mode = true
 texture_normal = ExtResource("11_lisox")
 stretch_mode = 0
@@ -167,6 +173,7 @@ offset_left = 1128.0
 offset_top = -520.0
 offset_right = 1294.0
 offset_bottom = -184.0
+scale = Vector2(0.8, 0.8)
 toggle_mode = true
 texture_normal = ExtResource("12_1riyv")
 stretch_mode = 0
