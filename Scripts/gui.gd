@@ -2,6 +2,9 @@ extends Control
 
 @onready var folder_pop_up = $"Folder Pop Up"
 
+signal sendQuarantine
+signal sendDorm
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -38,8 +41,10 @@ func _on_syringe_pressed() -> void:
 
 
 func _on_healthy_ui_pressed() -> void:
+	sendDorm.emit()
 	print("TEST: Send Left")
 
 
 func _on_quarantine_ui_pressed() -> void:
+	sendQuarantine.emit()
 	print("TEST: Send Right")

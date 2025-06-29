@@ -95,7 +95,7 @@ func confuseName():
 		var newIndex = randi_range(0, len(firstNames)-1)
 		new = firstNames[newIndex]
 		if new == fullName[index]:
-			new = firstName[(newIndex+1) % len(firstNames)]
+			new = firstNames[(newIndex+1) % len(firstNames)]
 	if index == 1:
 		var newIndex = randi_range(0, len(characters)-1)
 		new = characters[newIndex]
@@ -105,7 +105,7 @@ func confuseName():
 		var newIndex = randi_range(0, len(lastNames)-1)
 		new = lastNames[newIndex]
 		if new == fullName[index]:
-			new = lastName[(newIndex+1) % len(lastNames)]
+			new = lastNames[(newIndex+1) % len(lastNames)]
 	fullName[index] = new
 	
 	if fullName[1] == " ":
@@ -326,6 +326,7 @@ func showID():
 	idCpy.get_node("name").text = patientName
 	idCpy.position = get_viewport_rect().size / 2
 	idCpy.position.x -= 400
+	
 	
 	get_tree().get_root().add_child(idCpy)
 

@@ -10,47 +10,44 @@
 - Where were you today?
 	Patient: {Patient.action} {Patient.location}.
 	jump 
-- Can I see your ID?
+- Name and date of birth please.
 	elif {Patient.anxiety} == 1:
 		Patient: {Patient.anxious1}
 		You: It's just protocol.
-	[signal arg="usedtobeshowID"]
-	- Name and date of birth please.
-		if {Patient.aggression} == 0:
-			Patient: My name is {Patient.name} and I was born on {Patient.dob}.
-		elif {Patient.aggression} == 1:
-			Patient: {Patient.aggressive1}
-			You: It's just procedure
-			Patient: ...
-			Patient: {Patient.name}, {Patient.dob}
-		if {Patient.aggression} == 2:
-			Patient: No.
-			label askID
-			- Please
-				if {Patient.chance} > 50.0:
-					Patient: Fine, my name is {Patient.name} and my date of birth is {Patient.dob}
-					set {Patient.aggression} = 2.0
-				else:
-					Patient: I said no.
-					jump askID
-			- Why not?
-				if {Patient.wasConvinced} == true:
-					Patient: I already told you.
-					jump askID
-				else:
-					Patient: I don't trust you... you'll kill me like the rest.
-					- I don't want anyone to die
-						You: I don't want anyone to die. Please let me help you.
-						Patient: ...
-						set {Patient.chance} += range(0,20).pick_random()
-					- We're trying to help you
-						You: We are doing the best we can.
-						Patient: It's not enough.
-						set {Patient.chance} += range(0,10).pick_random()
-					set {Patient.wasConvinced} = true
-					jump askID
-			- Fine.
-	[signal arg="usedtobehideid"]
+	if {Patient.aggression} == 0:
+		Patient: My name is {Patient.name} and I was born on {Patient.dob}.
+	elif {Patient.aggression} == 1:
+		Patient: {Patient.aggressive1}
+		You: It's just procedure
+		Patient: ...
+		Patient: {Patient.name}, {Patient.dob}
+	if {Patient.aggression} == 2:
+		Patient: No.
+		label askID
+		- Please
+			if {Patient.chance} > 50.0:
+				Patient: Fine, my name is {Patient.name} and my date of birth is {Patient.dob}
+				set {Patient.aggression} = 2.0
+			else:
+				Patient: I said no.
+				jump askID
+		- Why not?
+			if {Patient.wasConvinced} == true:
+				Patient: I already told you.
+				jump askID
+			else:
+				Patient: I don't trust you... you'll kill me like the rest.
+				- I don't want anyone to die
+					You: I don't want anyone to die. Please let me help you.
+					Patient: ...
+					set {Patient.chance} += range(0,20).pick_random()
+				- We're trying to help you
+					You: We are doing the best we can.
+					Patient: It's not enough.
+					set {Patient.chance} += range(0,10).pick_random()
+				set {Patient.wasConvinced} = true
+				jump askID
+		- Fine.
 	jump 
 - How are you feeling?
 	if {Patient.aggression} == 0:
@@ -103,8 +100,4 @@
 		- Fine.
 			jump 
 	jump 
-- Go to Quarantine
-	[signal arg="WalkQuarantine"]
-- Do back to dorms
-	[signal arg="WalkDorm"]
 - That's all

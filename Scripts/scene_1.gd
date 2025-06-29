@@ -57,16 +57,24 @@ func walkRightAnimation():
 		bob.tween_property(infront, "position:y", finalpos.y-8, 0.2)
 		bob.tween_property(infront, "position:y", finalpos.y+8, 0.2)
 
+func sendQuarantine():
+	infront.get_node("CollisionShape2D").disabled = true
+	if infront.name != "Nurse":
+		infront.removeID()
+	walkRightAnimation()
+	seeingPatient = false
+
+func sendDorm():
+	infront.get_node("CollisionShape2D").disabled = true
+	infront.removeID()
+	walkLeftAnimation()
+	seeingPatient = false
+
 func DialogicSignal(arg: String):
 	if arg == "WalkQuarantine":
-		if infront.name != "Nurse":
-			infront.removeID()
-		walkRightAnimation()
-		seeingPatient = false
+		sendQuarantine()
 	if arg == "WalkDorm":
-		infront.removeID()
-		walkLeftAnimation()
-		seeingPatient = false
+		sendDorm()
 	if arg == "showID":
 		infront.showID()
 	if arg == "hideID":
@@ -102,3 +110,11 @@ func _process(_delta: float) -> void:
 func runDiagolue(dialogue: String):
 	dialogueStart.emit()
 	Dialogic.start(dialogue)
+
+
+func _on_gui_send_dorm() -> void:
+	sendDorm()
+
+
+func _on_gui_send_quarantine() -> void:
+	sendQuarantine()

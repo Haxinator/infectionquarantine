@@ -30,13 +30,23 @@ mouse_filter = 2
 script = ExtResource("1_b1cy7")
 metadata/_edit_use_anchors_ = true
 
-[node name="Folder Pop Up" type="Sprite2D" parent="."]
+[node name="Folder Pop Up" type="TextureRect" parent="."]
 visible = false
 z_index = 2
-position = Vector2(960, 540)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
 texture = ExtResource("2_atngs")
+expand_mode = 5
+metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="Folder Pop Up"]
+position = Vector2(584, 318)
+scale = Vector2(0.599999, 0.52)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Folder Pop Up/Area2D"]
 position = Vector2(0, -56)
@@ -139,6 +149,7 @@ offset_top = -184.0
 offset_right = 1916.0
 offset_bottom = 359.0
 scale = Vector2(0.7, 0.7)
+mouse_filter = 1
 texture_normal = ExtResource("4_5arer")
 stretch_mode = 0
 
@@ -150,6 +161,7 @@ offset_top = 120.0
 offset_right = 997.0
 offset_bottom = 412.0
 scale = Vector2(0.6, 0.6)
+mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource("10_u1lui")
 stretch_mode = 0
@@ -162,6 +174,7 @@ offset_top = -504.0
 offset_right = 710.0
 offset_bottom = -168.0
 scale = Vector2(0.8, 0.8)
+mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource("11_lisox")
 stretch_mode = 0
@@ -174,6 +187,7 @@ offset_top = -520.0
 offset_right = 1294.0
 offset_bottom = -184.0
 scale = Vector2(0.8, 0.8)
+mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource("12_1riyv")
 stretch_mode = 0

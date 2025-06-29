@@ -20,3 +20,6 @@ size_flags_vertical = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[connection signal="sendDorm" from="GUI" to="." method="_on_gui_send_dorm"]
+[connection signal="sendQuarantine" from="GUI" to="." method="_on_gui_send_quarantine"]
