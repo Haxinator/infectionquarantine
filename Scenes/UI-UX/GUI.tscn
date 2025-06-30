@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dphb3n2u8gxk8"]
+[gd_scene load_steps=31 format=3 uid="uid://dphb3n2u8gxk8"]
 
 [ext_resource type="Script" uid="uid://hcldmt5777ki" path="res://Scripts/gui.gd" id="1_b1cy7"]
 [ext_resource type="Texture2D" uid="uid://dgk0k18d8wob6" path="res://Assets/Art/UI assets/Symptom UI.png" id="2_atngs"]
@@ -13,10 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://ucmmc1rxcfjo" path="res://Assets/Art/Infection Assets/Symptom File.png" id="10_u1lui"]
 [ext_resource type="Texture2D" uid="uid://dw6x0tvff1ift" path="res://Assets/Art/UI assets/Healthy UI.png" id="11_lisox"]
 [ext_resource type="Texture2D" uid="uid://bp2cokb0o622o" path="res://Assets/Art/UI assets/Quarantine UI.png" id="12_1riyv"]
+[ext_resource type="Texture2D" uid="uid://dphqijiu0cico" path="res://Assets/Art/Infection Assets/Symptom File (rotated).png" id="12_kie62"]
 [ext_resource type="PackedScene" uid="uid://crrwxrg5xpx1x" path="res://Scenes/Misc/side_boundary.tscn" id="14_1riyv"]
+[ext_resource type="Texture2D" uid="uid://c2cvs8eghmdx5" path="res://Assets/Art/UI assets/Healthy UI (scaled).png" id="14_coj6r"]
 [ext_resource type="PackedScene" uid="uid://c4j2sdk605171" path="res://Scenes/UI-UX/top_bottom_boundary.tscn" id="14_lisox"]
 [ext_resource type="Texture2D" uid="uid://c3fvvfr8aah2e" path="res://Assets/Art/UI assets/Thermometer.png" id="14_w5mkn"]
 [ext_resource type="Texture2D" uid="uid://cygk1dmkbdjeh" path="res://Assets/Art/UI assets/Stethoscope.png" id="15_ap4e0"]
+[ext_resource type="Texture2D" uid="uid://b22ph37i2ukx4" path="res://Assets/Art/UI assets/Quarantine UI (scaled).png" id="16_ajibm"]
 [ext_resource type="Texture2D" uid="uid://cwks2jexy8snn" path="res://Assets/Art/UI assets/Needle.png" id="16_mkrna"]
 [ext_resource type="Script" path="res://Scenes/UI-UX/control_2.gd" id="20_kie62"]
 [ext_resource type="Texture2D" uid="uid://c6un373a4pov5" path="res://Assets/Art/Animations/Blood test #1.png" id="21_dsuvt"]
@@ -234,6 +237,7 @@ scale = Vector2(0.6, 0.6)
 mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource("10_u1lui")
+texture_hover = ExtResource("12_kie62")
 stretch_mode = 0
 
 [node name="Healthy UI" type="TextureButton" parent="Clickable Areas"]
@@ -247,6 +251,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource("11_lisox")
+texture_hover = ExtResource("14_coj6r")
 stretch_mode = 0
 
 [node name="Quarantine UI" type="TextureButton" parent="Clickable Areas"]
@@ -260,6 +265,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource("12_1riyv")
+texture_hover = ExtResource("16_ajibm")
 stretch_mode = 0
 
 [node name="Thermometer" type="TextureButton" parent="Clickable Areas"]

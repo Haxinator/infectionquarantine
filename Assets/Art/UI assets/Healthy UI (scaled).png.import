@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0rqgi0cuv5w"
-path="res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"
+uid="uid://c2cvs8eghmdx5"
+path="res://.godot/imported/Healthy UI (scaled).png-bc78124efe35bf05906ee3ff232b5135.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/UI assets/Hand Cursor.png"
-dest_files=["res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"]
+source_file="res://Assets/Art/UI assets/Healthy UI (scaled).png"
+dest_files=["res://.godot/imported/Healthy UI (scaled).png-bc78124efe35bf05906ee3ff232b5135.ctex"]
 
 [params]
 

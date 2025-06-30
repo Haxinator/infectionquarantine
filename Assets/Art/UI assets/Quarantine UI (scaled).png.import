@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0rqgi0cuv5w"
-path="res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"
+uid="uid://b22ph37i2ukx4"
+path="res://.godot/imported/Quarantine UI (scaled).png-a9b9708b702dc3d82730ce6dfb01c38a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/UI assets/Hand Cursor.png"
-dest_files=["res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"]
+source_file="res://Assets/Art/UI assets/Quarantine UI (scaled).png"
+dest_files=["res://.godot/imported/Quarantine UI (scaled).png-a9b9708b702dc3d82730ce6dfb01c38a.ctex"]
 
 [params]
 
