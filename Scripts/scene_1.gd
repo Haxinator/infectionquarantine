@@ -7,6 +7,8 @@ const patient = preload("res://Scenes/NPCS/Patient.tscn")
 
 var seeingPatient = true
 var infront = null
+var isSick = false
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -104,8 +106,14 @@ func _process(_delta: float) -> void:
 		
 		if randi() % 2 == 0:
 			patientCpy.setHealthy()
+			isSick = false
+			print("healthy")
 		else:
 			patientCpy.setSick()
+			isSick = true
+			print("sick")
+			
+		print("Score: " + str(score))
 		
 		add_child(patientCpy)
 		patientCpy.showID()
@@ -116,8 +124,12 @@ func runDiagolue(dialogue: String):
 
 
 func _on_gui_send_dorm() -> void:
+	if isSick:
+		score -=1
 	sendDorm()
 
 
 func _on_gui_send_quarantine() -> void:
+	if isSick:
+		score += 1
 	sendQuarantine()

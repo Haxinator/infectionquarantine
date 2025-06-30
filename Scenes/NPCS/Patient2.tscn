@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtvasmprtcjps"]
+
+[ext_resource type="PackedScene" uid="uid://x3c864jcg5x0" path="res://Scenes/NPCS/Patient.tscn" id="1_3u16c"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Patient" parent="." instance=ExtResource("1_3u16c")]
