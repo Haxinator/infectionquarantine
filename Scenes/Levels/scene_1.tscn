@@ -24,5 +24,6 @@ anchor_mode = 0
 [connection signal="needleSelect" from="GUI" to="." method="_on_gui_needle_select"]
 [connection signal="sendDorm" from="GUI" to="." method="_on_gui_send_dorm"]
 [connection signal="sendQuarantine" from="GUI" to="." method="_on_gui_send_quarantine"]
+[connection signal="showBlood" from="GUI" to="." method="_on_gui_show_blood"]
 [connection signal="stethoscopeSelect" from="GUI" to="." method="_on_gui_stethoscope_select"]
 [connection signal="thermometerSelect" from="GUI" to="." method="_on_gui_thermometer_select"]

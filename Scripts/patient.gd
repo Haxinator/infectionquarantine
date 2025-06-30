@@ -1,13 +1,15 @@
 extends Node2D
 
 signal dialogueStart
+signal fillNeedle
 
 #tool equipped
 enum Tools {
 	NONE,
 	STETH,
 	THERM,
-	NEEDLE
+	NEEDLE,
+	FULLNEEDLE
 }
 
 #difficulty
@@ -413,7 +415,9 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if tool == Tools.STETH:
 			showHeartRate()
 		if tool == Tools.NEEDLE:
-			showBlood()
+			fillNeedle.emit()
+			tool = Tools.FULLNEEDLE
+			#showBlood()
 		if tool == Tools.THERM:
 			showTemp()
 

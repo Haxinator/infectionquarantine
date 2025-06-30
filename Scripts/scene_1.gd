@@ -19,7 +19,8 @@ enum Tools {
 	NONE,
 	STETH,
 	THERM,
-	NEEDLE
+	NEEDLE,
+	FULLNEEDLE
 }
 var selectedTool = Tools.NONE
 
@@ -144,13 +145,17 @@ func _process(_delta: float) -> void:
 		add_child(patientCpy)
 		
 		#walkInAnimation()
-		
+		patientCpy.connect("fillNeedle", setNeedleFull)
 		patientCpy.showID()
 
 func runDiagolue(dialogue: String):
 	dialogueStart.emit()
 	Dialogic.start(dialogue)
 
+func setNeedleFull():
+	Input.set_custom_mouse_cursor(fullNeedle)
+	selectedTool = Tools.FULLNEEDLE
+	get_node("GUI").setNeedleFull()
 
 func _on_gui_send_dorm() -> void:
 	if isSick:
@@ -206,3 +211,9 @@ func _on_gui_thermometer_select() -> void:
 func setTool(tool):
 	selectedTool = tool
 	infront.setTool(tool)
+
+
+func _on_gui_show_blood() -> void:
+	setTool(Tools.NEEDLE)
+	Input.set_custom_mouse_cursor(emptyNeedle)
+	infront.showBlood()

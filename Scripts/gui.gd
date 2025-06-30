@@ -7,6 +7,9 @@ signal sendDorm
 signal thermometerSelect
 signal stethoscopeSelect
 signal needleSelect
+signal showBlood
+
+var needleIsFull: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,8 +22,13 @@ func _process(delta: float) -> void:
 
 
 func _on_computer_pressed() -> void:
+	if needleIsFull:
+		showBlood.emit()
+		needleIsFull = false
 	print("TEST: Computer Pressed")
 
+func setNeedleFull():
+	needleIsFull = true
 
 func _on_symptoms_folder_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -45,12 +53,10 @@ func _on_syringe_pressed() -> void:
 
 func _on_healthy_ui_pressed() -> void:
 	sendDorm.emit()
-	print("TEST: Send Left")
 
 
 func _on_quarantine_ui_pressed() -> void:
 	sendQuarantine.emit()
-	print("TEST: Send Right")
 
 
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
