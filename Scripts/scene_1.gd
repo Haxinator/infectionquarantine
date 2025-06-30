@@ -8,6 +8,8 @@ const patient = preload("res://Scenes/NPCS/Patient.tscn")
 var seeingPatient = true
 var infront = null
 var isSick = false
+var inCorrectGuessCount = 0
+var correctGuessCount = 0
 var score = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +20,7 @@ func _ready() -> void:
 	var nurseCpy = nurse.instantiate()
 	Dialogic.signal_event.connect(DialogicSignal)
 	nurseCpy.position = get_viewport_rect().size/2
-	nurseCpy.position.y -= 40
+	#nurseCpy.position.y -= 40
 	add_child(nurseCpy)
 	runDiagolue("NurseIntro")
 	infront = nurseCpy
@@ -101,7 +103,7 @@ func _process(_delta: float) -> void:
 		infront = patientCpy
 		patientCpy.visible = true
 		patientCpy.position = get_viewport_rect().size/2
-		patientCpy.position.y -= 80
+		#patientCpy.position.y -= 80
 		#patientCpy.get_node("AnimationPlayer").play("WalkIn")
 		
 		if randi() % 2 == 0:
@@ -114,6 +116,7 @@ func _process(_delta: float) -> void:
 			print("sick")
 			
 		print("Score: " + str(score))
+		print("incorrect guesses: " + str(inCorrectGuessCount))
 		
 		add_child(patientCpy)
 		patientCpy.showID()
@@ -125,11 +128,19 @@ func runDiagolue(dialogue: String):
 
 func _on_gui_send_dorm() -> void:
 	if isSick:
+		inCorrectGuessCount += 1
 		score -=1
+	else:
+		score +=1
+		correctGuessCount += 1	
 	sendDorm()
 
 
 func _on_gui_send_quarantine() -> void:
 	if isSick:
 		score += 1
+		correctGuessCount += 1
+	else:
+		inCorrectGuessCount += 1
+		score -= 1
 	sendQuarantine()
