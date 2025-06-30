@@ -1,0 +1,6 @@
+You: ...
+You: You quickly take a seat to prepare for the new day.
+Nurse: Hi Doctor welcome back. Just a heads up... the Patients seem more worried today than usual. Nervous patients may give false positives so be aware of that.
+Nurse: In other news. We've found Patients with blood disorders give false positives for having viral contamination in their blood. We've noted down the Patients with blood disorders so you can take that into account in your assessment.
+Nurse: I have other matters to attend to. See you later.
+[signal arg="WalkQuarantine"]

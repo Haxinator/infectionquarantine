@@ -31,7 +31,10 @@ directories/dch_directory={
 directories/dtl_directory={
 "NurseIntro": "res://dialog/NurseIntro.dtl",
 "Patient1": "res://dialog/Patient1.dtl",
-"Transition": "res://dialog/Transition.dtl"
+"Transition": "res://dialog/Transition.dtl",
+"endDay": "res://dialog/endDay.dtl",
+"nurse2": "res://dialog/nurse2.dtl",
+"nurse3": "res://dialog/nurse3.dtl"
 }
 layout/style_directory={}
 glossary/default_case_sensitive=true

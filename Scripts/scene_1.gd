@@ -12,12 +12,15 @@ const hand = preload("res://Assets/Art/UI assets/Hand cursor.png")
 const tempHand = preload("res://Assets/Art/UI assets/Temp Hand.png")
 const stethoscopeHand = preload("res://Assets/Art/UI assets/Stethoscope Hand.png")
 
-var seeingPatient = true
+var seeingPatient = false
 var infront = null
 var isSick = false
 var inCorrectGuessCount = 0
 var correctGuessCount = 0
 var score = 0
+var difficulty = 0
+var endShift = false
+
 enum Tools {
 	NONE,
 	STETH,
@@ -32,14 +35,35 @@ func _ready() -> void:
 	# Plays looped main_bgm when scene_1 loads
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.MAIN_BGM)
 	
+	endShift = false
+	
 	var nurseCpy = nurse.instantiate()
 	Dialogic.signal_event.connect(DialogicSignal)
 	nurseCpy.position = get_viewport_rect().size/2
 	#nurseCpy.position.y -= 40
-	add_child(nurseCpy)
-	runDiagolue("NurseIntro")
-	infront = nurseCpy
+
+	#set difficulty
+	if name == "Scene1":
+		add_child(nurseCpy)
+		runDiagolue("NurseIntro")
+		infront = nurseCpy
+		difficulty = 0
+		seeingPatient = true
+	if name == "Scene2":
+		add_child(nurseCpy)
+		runDiagolue("nurse2")
+		infront = nurseCpy
+		difficulty = 1
+		seeingPatient = true
+	if name == "Scene3":
+		add_child(nurseCpy)
+		runDiagolue("nurse3")
+		infront = nurseCpy
+		seeingPatient = true
+		difficulty = 2
+	
 	setTool(selectedTool)
+	print(difficulty)
 
 func walkLeftAnimation():
 	#dynamic walking animation using tweens
@@ -112,24 +136,24 @@ func DialogicSignal(arg: String):
 		infront.showID()
 	if arg == "hideID":
 		infront.removeID()
-	if arg == "HR":
-		infront.showHeartRate()
-	if arg == "BL":
-		infront.showBlood()
-	if arg == "temp":
-		infront.showTemp()
-	if arg == "hide":
-		infront.removeLabel()
+	if arg == "endDay":
+		if name == "Scene1":
+			get_tree().change_scene_to_file("res://Scenes/Levels/scene_2.tscn")
+		if name == "Scene2":
+			get_tree().change_scene_to_file("res://Scenes/Levels/scene_3.tscn")
+		if name == "Scene3":
+			get_tree().reload_current_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	#hide any popups
 	if Input.is_action_just_pressed("left_mouse"):
 		get_node("GUI/Control2").visible = false
-	if not seeingPatient:
+	if not seeingPatient and not endShift:
 		seeingPatient = true
 		var patientCpy = patient.instantiate()
 		infront = patientCpy
+		infront.setDifficulty(difficulty)
 		#patientCpy.visible = true
 		patientCpy.position = get_viewport_rect().size/2
 		
@@ -173,6 +197,8 @@ func _on_gui_send_dorm() -> void:
 		correctGuessCount += 1	
 	scoreboard.text = "Score: " + str(score)
 	sendDorm()
+	if endShift:
+		runDiagolue("endDay")
 
 
 func _on_gui_send_quarantine() -> void:
@@ -184,6 +210,8 @@ func _on_gui_send_quarantine() -> void:
 		score -= 1
 	scoreboard.text = "Score: " + str(score)
 	sendQuarantine()
+	if endShift:
+		runDiagolue("endDay")
 
 
 func _on_gui_needle_select() -> void:
@@ -220,7 +248,8 @@ func _on_gui_thermometer_select() -> void:
 
 func setTool(tool):
 	selectedTool = tool
-	infront.setTool(tool)
+	if infront != null:
+		infront.setTool(tool)
 
 
 func _on_gui_show_blood() -> void:
@@ -235,3 +264,7 @@ func _on_gui_show_blood() -> void:
 	GUI.visible = true
 	anim.play()
 	GUI.get_node("Timer").start()
+
+
+func _on_timer_timeout() -> void:
+	endShift = true

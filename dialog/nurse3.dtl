@@ -1,0 +1,5 @@
+You: ...
+Nurse: Hello Doctor. The patients are absolutely frantic today. Someone has been spreading rumours that those who go into quarantine don't come back out.
+Nurse: Needless to say this rumour will affect the mood of Patients. They'll be more aggressive than usual and likely try to withhold information. Try your best to convince them to cooperate.
+Nurse: Good luck.
+[signal arg="WalkQuarantine"]

@@ -1,12 +1,3 @@
-- Check
-	- Heart Rate
-		[signal arg="HR"]
-	- Blood
-		[signal arg="BL"]
-	- Temperature
-		[signal arg="temp"]
-	- None
-		[signal arg="hide"]
 - Where were you today?
 	Patient: {Patient.action} {Patient.location}.
 	jump 

@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7rkdddy11o7b"]
+[gd_scene load_steps=3 format=3 uid="uid://bof6dkuhlp36c"]
 
-[ext_resource type="Script" uid="uid://4piw27qk6ju4" path="res://Scripts/scene_1.gd" id="1_0jpfo"]
-[ext_resource type="PackedScene" uid="uid://dphb3n2u8gxk8" path="res://Scenes/UI-UX/GUI.tscn" id="1_3sd7o"]
+[ext_resource type="Script" uid="uid://4piw27qk6ju4" path="res://Scripts/scene_1.gd" id="1_sly30"]
+[ext_resource type="PackedScene" uid="uid://dphb3n2u8gxk8" path="res://Scenes/UI-UX/GUI.tscn" id="2_6bjsq"]
 
-[node name="Scene1" type="Control" groups=["Level"]]
+[node name="Scene3" type="Control" groups=["Level"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,9 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_0jpfo")
+script = ExtResource("1_sly30")
 
-[node name="GUI" parent="." instance=ExtResource("1_3sd7o")]
+[node name="GUI" parent="." instance=ExtResource("2_6bjsq")]
 layout_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3

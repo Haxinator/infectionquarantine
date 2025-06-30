@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cygk1dmkbdjeh" path="res://Assets/Art/UI assets/Stethoscope.png" id="15_ap4e0"]
 [ext_resource type="Texture2D" uid="uid://b22ph37i2ukx4" path="res://Assets/Art/UI assets/Quarantine UI (scaled).png" id="16_ajibm"]
 [ext_resource type="Texture2D" uid="uid://cwks2jexy8snn" path="res://Assets/Art/UI assets/Needle.png" id="16_mkrna"]
-[ext_resource type="Script" path="res://Scenes/UI-UX/control_2.gd" id="20_kie62"]
+[ext_resource type="Script" uid="uid://b3q4urchmv264" path="res://Scenes/UI-UX/control_2.gd" id="20_kie62"]
 [ext_resource type="Texture2D" uid="uid://c6un373a4pov5" path="res://Assets/Art/Animations/Blood test #1.png" id="21_dsuvt"]
 [ext_resource type="Texture2D" uid="uid://dmqvfj6udog28" path="res://Assets/Art/Animations/Blood test #2.png" id="22_coj6r"]
 [ext_resource type="Texture2D" uid="uid://bc0p7fojgbo5f" path="res://Assets/Art/Animations/Blood test #3.png" id="23_ajibm"]
