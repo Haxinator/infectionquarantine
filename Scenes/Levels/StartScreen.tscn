@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://4mlkwq2oroci"]
+[gd_scene load_steps=5 format=3 uid="uid://4mlkwq2oroci"]
 
 [ext_resource type="Script" uid="uid://c67kt0vvjhetn" path="res://Scripts/start_screen.gd" id="1_s8klt"]
+[ext_resource type="Texture2D" uid="uid://3e7xaa3hwt8f" path="res://Assets/Art/Backgrounds/Dystopian_draft.png" id="2_b5xfq"]
+[ext_resource type="AudioStream" uid="uid://cw7ixm2gyysws" path="res://Assets/Audio/Music/Wind BGM.mp3" id="3_ylkyc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nitfa"]
 font_size = 64
+font_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.306923, 0.306923, 0.306923, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,14 +19,15 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_s8klt")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_b5xfq")
+expand_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -46,4 +51,10 @@ label_settings = SubResource("LabelSettings_nitfa")
 layout_mode = 2
 text = "Start"
 
+[node name="Wind BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ylkyc")
+volume_db = -3.0
+autoplay = true
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

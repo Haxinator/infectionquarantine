@@ -24,3 +24,8 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 			new_2d_audio.play()
 	else:
 		push_error("Audio Manager failed to find setting for type ", type)
+
+func stop_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
+	if sound_effect_dict.has(type):
+		var sound_effect: SoundEffect = sound_effect_dict[type]
+		sound_effect.is_queued_for_deletion()

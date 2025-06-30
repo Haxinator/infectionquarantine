@@ -11,3 +11,4 @@
 - Folder Open SFX: https://www.zapsplat.com/music/a2-sized-art-or-design-folder-plastic-page-flip-turn-with-finger-3/
 - Folder Close SFX: https://www.zapsplat.com/music/a2-sized-art-or-design-folder-plastic-page-flip-turn-with-finger-4/
 - Click SFX: https://pixabay.com/sound-effects/click-21156/
+- Wind SFX: https://pixabay.com/sound-effects/wind-sound-effect-318829/
