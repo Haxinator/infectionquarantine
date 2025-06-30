@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0rqgi0cuv5w"
-path="res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"
+uid="uid://bn1gimto81ua5"
+path="res://.godot/imported/Stethoscope Hand.png-c86757b27266e3cfabc46b41ac65f0e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/UI assets/Hand Cursor.png"
-dest_files=["res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"]
+source_file="res://Assets/Art/UI assets/Stethoscope Hand.png"
+dest_files=["res://.godot/imported/Stethoscope Hand.png-c86757b27266e3cfabc46b41ac65f0e2.ctex"]
 
 [params]
 
