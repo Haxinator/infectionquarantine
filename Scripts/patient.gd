@@ -26,7 +26,7 @@ var anxiety = -1
 var variant = -1
 
 #Portraits
-const TOTAL_HEALTHY = 2
+const TOTAL_HEALTHY = 5
 const TOTAL_SICK = 1
 
 #Dialogue
@@ -55,6 +55,10 @@ func _ready() -> void:
 	anxiety = randi_range(0,2)
 	variant = randi_range(0,2)
 	disorder = true if randi() % 100 < 30 else false
+	
+	# Sets the sprite for the character portrait on _ready
+	patient = "Patient" + str(randi_range(1, TOTAL_HEALTHY))
+	get_node("Sprite2D").texture = load("res://Assets/Art/Characters/Patients/" + patient + ".png")
 	
 	#must be called to set dialogic vars accordingly
 	setDialogicVars()
@@ -231,8 +235,6 @@ func setHealthy():
 		temp = randf_range(36, 39)
 	temp = snapped(temp, 0.01)
 	
-	patient = "Patient" + str(randi_range(1, TOTAL_HEALTHY))
-	get_node("Sprite2D").texture = load("res://Assets/Art/" + patient + ".PNG")
 	Dialogic.VAR.Patient.location = locations[randi_range(0, len(locations)-1)]
 	Dialogic.VAR.Patient.action = actions[randi_range(0, len(actions)-1)]
 	Dialogic.VAR.Patient.feeling = notFeelingSick[randi_range(0, len(notFeelingSick)-1)]
