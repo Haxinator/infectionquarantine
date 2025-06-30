@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvsxc38p14h03"
-path="res://.godot/imported/Symptoms-Folder-Placeholder.PNG-24a7572bbf8d95c6b436614c5af7e5f4.ctex"
+uid="uid://brqjfexf6l818"
+path="res://.godot/imported/Placeholder2.PNG-d7e16df2ec042ae098191a187df3310b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Symptoms-Folder-Placeholder.PNG"
-dest_files=["res://.godot/imported/Symptoms-Folder-Placeholder.PNG-24a7572bbf8d95c6b436614c5af7e5f4.ctex"]
+source_file="res://Assets/Art/UI assets/Placeholders/Placeholder2.PNG"
+dest_files=["res://.godot/imported/Placeholder2.PNG-d7e16df2ec042ae098191a187df3310b.ctex"]
 
 [params]
 

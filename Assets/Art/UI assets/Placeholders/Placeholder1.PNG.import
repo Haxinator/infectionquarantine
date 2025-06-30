@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m68d07ry41a4"
-path="res://.godot/imported/Placeholder Hand Cursor.png-260ddfc83f350d65d1fd33c3a835062a.ctex"
+uid="uid://chfjy6q77ouwt"
+path="res://.godot/imported/Placeholder1.PNG-aa7f160af5a340cafe26e3810665f7e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Placeholder Hand Cursor.png"
-dest_files=["res://.godot/imported/Placeholder Hand Cursor.png-260ddfc83f350d65d1fd33c3a835062a.ctex"]
+source_file="res://Assets/Art/UI assets/Placeholders/Placeholder1.PNG"
+dest_files=["res://.godot/imported/Placeholder1.PNG-aa7f160af5a340cafe26e3810665f7e8.ctex"]
 
 [params]
 

@@ -7,6 +7,7 @@ class_name SoundEffect
 enum SOUND_EFFECT_TYPE{
 	FOLDER_OPEN,
 	FOLDER_CLOSE,
+	MAIN_BGM,
 }
 
 @export_range(0, 10) var limit: int = 5

@@ -12,6 +12,9 @@ var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Plays looped main_bgm when scene_1 loads
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.MAIN_BGM)
+	
 	var nurseCpy = nurse.instantiate()
 	Dialogic.signal_event.connect(DialogicSignal)
 	nurseCpy.position = get_viewport_rect().size/2
