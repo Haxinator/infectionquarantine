@@ -1,0 +1,4 @@
+Early this morning we have detected an outbreak of the virus, we do not yet know how severely it has spread among the residents.
+As the sole doctor in the facility, please assess the residents and sort them into healthy or infected.
+Please look at all available evidence, and please hurry before it spreads...
+[signal arg="game start"]
