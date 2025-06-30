@@ -4,6 +4,10 @@ signal dialogueStart
 
 const nurse = preload("res://Scenes/NPCS/nurse.tscn")
 const patient = preload("res://Scenes/NPCS/Patient.tscn")
+const emptyNeedle = preload("res://Assets/Art/UI assets/Holding Needle Hand.png")
+const fullNeedle = preload("res://Assets/Art/UI assets/Holding Needle Hand (with liquid).png")
+const hand = preload("res://Assets/Art/UI assets/Hand cursor.png")
+const tempHand = preload("res://Assets/Art/UI assets/Temp Hand.png")
 
 var seeingPatient = true
 var infront = null
@@ -172,8 +176,10 @@ func _on_gui_needle_select() -> void:
 	if selectedTool == Tools.NEEDLE:
 		setTool(Tools.NONE)
 		get_node("GUI/Clickable Areas/ItemList").deselect_all()
+		Input.set_custom_mouse_cursor(hand)
 	else:
 		setTool(Tools.NEEDLE)
+		Input.set_custom_mouse_cursor(emptyNeedle)
 	print(str(selectedTool))
 
 
@@ -181,6 +187,7 @@ func _on_gui_stethoscope_select() -> void:
 	if selectedTool == Tools.STETH:
 		setTool(Tools.NONE)
 		get_node("GUI/Clickable Areas/ItemList").deselect_all()
+		Input.set_custom_mouse_cursor(hand)
 	else:
 		setTool(Tools.STETH)
 	print(str(selectedTool))
@@ -190,8 +197,10 @@ func _on_gui_thermometer_select() -> void:
 	if selectedTool == Tools.THERM:
 		setTool(Tools.NONE)
 		get_node("GUI/Clickable Areas/ItemList").deselect_all()
+		Input.set_custom_mouse_cursor(hand)
 	else:
 		setTool(Tools.THERM)
+		Input.set_custom_mouse_cursor(tempHand)
 	print(str(selectedTool))
 
 func setTool(tool):

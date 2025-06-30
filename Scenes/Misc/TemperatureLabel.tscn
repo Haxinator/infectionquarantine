@@ -1,8 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b177hfvh02tf4"]
+[gd_scene load_steps=6 format=3 uid="uid://b177hfvh02tf4"]
 
 [ext_resource type="Script" uid="uid://h35fp78ritpu" path="res://Scenes/Misc/temperature_label.gd" id="1_uxw2h"]
+[ext_resource type="Texture2D" uid="uid://d2cfjls55xytq" path="res://Assets/Art/UI assets/Temp Gun UI.png" id="2_pscp5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w30bt"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6xpt"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jui08"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="TemperatureLabel" type="Control"]
@@ -15,15 +24,36 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_uxw2h")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_w30bt")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pscp5")
+
+[node name="temp" type="Label" parent="Sprite2D"]
+offset_left = -32.0
+offset_top = -71.0
+offset_right = 58.0
+offset_bottom = 17.0
+text = "30.00 C"
+label_settings = SubResource("LabelSettings_w30bt")
+
+[node name="Label2" type="Label" parent="Sprite2D"]
+offset_left = 19.0
+offset_top = -77.0
+offset_right = 59.0
+offset_bottom = -54.0
+text = "o"
+label_settings = SubResource("LabelSettings_f6xpt")
+
+[node name="Label3" type="Label" parent="Sprite2D"]
+offset_left = -36.0
+offset_top = -100.0
+offset_right = 66.0
+offset_bottom = -77.0
+text = "Temp"
+label_settings = SubResource("LabelSettings_jui08")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
