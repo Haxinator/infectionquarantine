@@ -18,7 +18,7 @@ func _ready() -> void:
 	var nurseCpy = nurse.instantiate()
 	Dialogic.signal_event.connect(DialogicSignal)
 	nurseCpy.position = get_viewport_rect().size/2
-	nurseCpy.position.y -= 60
+	nurseCpy.position.y -= 40
 	add_child(nurseCpy)
 	runDiagolue("NurseIntro")
 	infront = nurseCpy
