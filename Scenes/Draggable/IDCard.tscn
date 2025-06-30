@@ -1,13 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyojwaxwd6fq3"]
 
 [ext_resource type="Script" uid="uid://c4anjbsk0f2fc" path="res://Scenes/Draggable/id_card.gd" id="1_wybq7"]
-[ext_resource type="Texture2D" uid="uid://cdumeuqlhl248" path="res://dialog/IDCards/ID.jpg" id="1_xcexy"]
+[ext_resource type="Texture2D" uid="uid://c5u6b26skilpb" path="res://Assets/Art/UI assets/ID Cards/Patient1 ID.png" id="2_28jo6"]
+[ext_resource type="Texture2D" uid="uid://cubt0oqrb7d1k" path="res://Assets/Art/UI assets/ID Cards/Blood Disorder Text.png" id="3_hodtn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wybq7"]
-font_size = 28
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_28jo6"]
 font_size = 28
 font_color = Color(0, 0, 0, 1)
 
@@ -22,7 +19,13 @@ script = ExtResource("1_wybq7")
 
 [node name="CardImage" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_xcexy")
+texture = ExtResource("2_28jo6")
+
+[node name="Disorder Text" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(44, 34)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_hodtn")
 
 [node name="name" type="Label" parent="."]
 offset_left = 11.0
@@ -40,15 +43,6 @@ offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 text = "28"
 label_settings = SubResource("LabelSettings_wybq7")
-
-[node name="disorder" type="Label" parent="."]
-offset_left = 108.0
-offset_top = 27.0
-offset_right = 154.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-text = "Yes"
-label_settings = SubResource("LabelSettings_28jo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.5)
