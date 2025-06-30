@@ -80,3 +80,15 @@ func _on_computer_animated_pressed() -> void:
 	get_node("Clickable Areas/ComputerAnimated/AnimatedSprite2D").play()
 	get_node("Clickable Areas/ComputerAnimated").position.x -= 150
 	get_node("Clickable Areas/ComputerAnimated").scale = Vector2(0.4,0.4)
+
+
+func _on_quarantine_ui_mouse_entered() -> void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.CLICK)
+
+
+func _on_healthy_ui_mouse_entered() -> void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.CLICK)
+
+
+func _on_symptoms_file_mouse_entered() -> void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.CLICK)

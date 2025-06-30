@@ -407,8 +407,11 @@ label_settings = SubResource("LabelSettings_qmgt4")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Clickable Areas/Computer" to="." method="_on_computer_pressed"]
+[connection signal="mouse_entered" from="Clickable Areas/Symptoms File" to="." method="_on_symptoms_file_mouse_entered"]
 [connection signal="toggled" from="Clickable Areas/Symptoms File" to="." method="_on_symptoms_folder_toggled"]
+[connection signal="mouse_entered" from="Clickable Areas/Healthy UI" to="." method="_on_healthy_ui_mouse_entered"]
 [connection signal="pressed" from="Clickable Areas/Healthy UI" to="." method="_on_healthy_ui_pressed"]
+[connection signal="mouse_entered" from="Clickable Areas/Quarantine UI" to="." method="_on_quarantine_ui_mouse_entered"]
 [connection signal="pressed" from="Clickable Areas/Quarantine UI" to="." method="_on_quarantine_ui_pressed"]
 [connection signal="pressed" from="Clickable Areas/Thermometer" to="." method="_on_thermometer_pressed"]
 [connection signal="pressed" from="Clickable Areas/Stethoscope" to="." method="_on_stethoscope_pressed"]
