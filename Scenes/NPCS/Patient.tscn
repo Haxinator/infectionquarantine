@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dhwdqhirkeuyj" path="res://Assets/Art/Characters/Patients/Patient1.png" id="2_mk8kr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ed4br"]
-radius = 143.0
-height = 660.0
+radius = 118.0
+height = 376.0
 
 [node name="Patient" type="Area2D"]
 z_index = -1
@@ -17,6 +17,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_mk8kr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -125)
 shape = SubResource("CapsuleShape2D_ed4br")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
