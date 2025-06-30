@@ -15,6 +15,7 @@ var bloodContaminated = false
 var confused = false
 var isSick: bool = false
 var patient: String = ""
+var disorder = false
 var ID = null
 var label = null
 var sick = false
@@ -40,7 +41,11 @@ var aggressive1 = ["Why do I need to tell you my name and date of birth? It's al
 var aggressive2 = ["Yes people are dying. What are you doing to help them? Playing judge, jury and executioner?", "You'll kill me like the rest.", "I want nothing to do with you.", "You're nothing but a murder.", "Stop talking to me.", "Get away from me."]
 var anxious1 = ["Why is something wrong?", "Is something wrong?", "What's the matter?", "Did I do something wrong?"]
 var anxious2 = ["Please, please...", "What is it? What's wrong with me?", "I'm not going to die right?", "No, no, no... this can't be happening.", "Please don't let me die."]
-var symptoms = ["I'm dizzy. ", "I feel nauseous. ", "I feel generally sick. ", "I have aches and pains all over. ", "I haven't been sleeping. ", "I've been violently coughing. ", "Sometimes I feel I'm out of breath. ", "I've been getting hot and cold flushes. ", "I can't cool down. ", "I feel weird. "]
+var symptoms = ["I'm dizzy. ", "My head is killing me. ", "I have a massive migraine. ", "I have a headache. ", "I feel nauseous. ", "I feel generally sick. ", "I have aches and pains all over. ", "I haven't been sleeping. ", "I've been violently coughing. ", "Sometimes I feel I'm out of breath. ", "I've been getting hot and cold flushes. ", "I can't cool down. ", "I feel weird. "]
+var headache = [ "My head is killing me. ", "I have a massive migraine. ", "I have a headache. "]
+var tired = ["I'm dizzy. ", "I feel tired. ", "I haven't been sleeping. "]
+var otherIllness = false
+
 #Most likely randomise character here.
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,6 +54,7 @@ func _ready() -> void:
 	aggression = randi_range(0,2)
 	anxiety = randi_range(0,2)
 	variant = randi_range(0,2)
+	disorder = true if randi() % 100 < 30 else false
 	
 	#must be called to set dialogic vars accordingly
 	setDialogicVars()
@@ -196,6 +202,7 @@ func setHealthy():
 	bloodContaminated = false
 	heartRate = randi_range(60, 100)
 	temp = randf_range(36, 37.9)
+	otherIllness = true if randi_range(0,1) == 1 else false
 	
 	#increase heart rate if angry or anxious
 	if anxiety == 2 or aggression == 2:
@@ -213,6 +220,11 @@ func setHealthy():
 		else:
 			confuseName()
 			confuseDOB()
+
+	#false positive.
+	if disorder:
+		if randi() % 100 < 80:
+			bloodContaminated = true
 	
 	#change of high temperature if angry
 	if aggression == 2:
@@ -221,11 +233,36 @@ func setHealthy():
 	
 	patient = "Patient" + str(randi_range(1, TOTAL_HEALTHY))
 	get_node("Sprite2D").texture = load("res://Assets/Art/" + patient + ".PNG")
-	Dialogic.VAR.Patient.feeling = notFeelingSick[randi_range(0, len(notFeelingSick)-1)]
 	Dialogic.VAR.Patient.location = locations[randi_range(0, len(locations)-1)]
 	Dialogic.VAR.Patient.action = actions[randi_range(0, len(actions)-1)]
+	Dialogic.VAR.Patient.feeling = notFeelingSick[randi_range(0, len(notFeelingSick)-1)]
+	
+	var symptoms = ""
+	
+	if otherIllness:
+		symptoms += generateOtherIllness()
+	if anxiety == 2:
+		Dialogic.VAR.Patient.feeling = (symptoms + generateSymptoms(randi_range(1,4)))
+	elif anxiety == 1:
+		Dialogic.VAR.Patient.feeling = (symptoms + generateSymptoms(randi_range(0,2)))
+		
+	if confused:
+		var state = randi()%3
+		if state == 1:
+			confuseName()
+		elif state == 2:
+			confuseDOB()
+		else:
+			confuseName()
+			confuseDOB()
 
-	confuseDOB()
+func generateOtherIllness():
+	if randi_range(0,1) == 1:
+		confused = true
+		return tired[randi_range(0, len(tired)-1)]
+	else:
+		temp = snapped(randf_range(38, 40),0.01)
+		return headache[randi_range(0, len(headache)-1)]
 
 func generateSymptoms(symptomsRequired):
 	var string = ""
@@ -245,17 +282,17 @@ func setSick():
 	DOB = getDOB()
 	Dialogic.VAR.Patient.dob = DOB
 	sick = true
-	heartRate = randi_range(60, 120)
-	temp = snapped(randf_range(36, 42),0.01)
+	heartRate = randi_range(60, 140)
+	temp = snapped(randf_range(36, 40),0.01)
 	#50% of false negative
 	bloodContaminated = true if randi()%2 == 1 else false 
 	confused = true if randi()%2 == 1 else false 
 	var symptomsRequired = randi_range(4, 5)
-	
 	var sympCount = 0
+
 	if temp >= 38:
 		sympCount +=1
-	if heartRate >= 100:
+	if heartRate > 120:
 		sympCount +=1
 	if bloodContaminated:
 		sympCount +=1
@@ -269,6 +306,8 @@ func setSick():
 		else:
 			confuseName()
 			confuseDOB()
+			
+	
 	
 	symptomsRequired -= sympCount
 	
@@ -324,9 +363,9 @@ func showID():
 	ID = idCpy
 	idCpy.get_node("dob").text = DOB
 	idCpy.get_node("name").text = patientName
+	idCpy.get_node("disorder").text = "Yes" if disorder else "No"
 	idCpy.position = get_viewport_rect().size / 2
 	idCpy.position.x -= 400
-	
 	
 	get_tree().get_root().add_child(idCpy)
 

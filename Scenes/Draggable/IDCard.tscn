@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyojwaxwd6fq3"]
+[gd_scene load_steps=6 format=3 uid="uid://cyojwaxwd6fq3"]
 
 [ext_resource type="Script" uid="uid://c4anjbsk0f2fc" path="res://Scenes/Draggable/id_card.gd" id="1_wybq7"]
 [ext_resource type="Texture2D" uid="uid://cdumeuqlhl248" path="res://dialog/IDCards/ID.jpg" id="1_xcexy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wybq7"]
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_28jo6"]
 font_size = 28
 font_color = Color(0, 0, 0, 1)
 
@@ -36,6 +40,15 @@ offset_bottom = 42.0
 scale = Vector2(0.5, 0.5)
 text = "28"
 label_settings = SubResource("LabelSettings_wybq7")
+
+[node name="disorder" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 27.0
+offset_right = 154.0
+offset_bottom = 66.0
+scale = Vector2(0.5, 0.5)
+text = "Yes"
+label_settings = SubResource("LabelSettings_28jo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.5)
