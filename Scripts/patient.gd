@@ -373,9 +373,10 @@ func showID():
 	var id = load("res://Scenes/Draggable/IDCard.tscn")
 	var idCpy = id.instantiate()
 	ID = idCpy
+	idCpy.get_node("CardImage").texture = load("res://Assets/Art/UI assets/ID Cards/" + patient + " ID.png")
 	idCpy.get_node("dob").text = DOB
 	idCpy.get_node("name").text = patientName
-	idCpy.get_node("disorder").text = "Yes" if disorder else "No"
+	idCpy.get_node("Disorder Text").visible = true if disorder else false
 	idCpy.position = get_viewport_rect().size / 2
 	idCpy.position.x -= 400
 	
