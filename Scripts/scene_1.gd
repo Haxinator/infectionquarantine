@@ -2,6 +2,8 @@ extends Control
 
 signal dialogueStart
 
+@onready var scoreboard = get_node("GUI/Scoreboard")
+
 const nurse = preload("res://Scenes/NPCS/nurse.tscn")
 const patient = preload("res://Scenes/NPCS/Patient.tscn")
 const emptyNeedle = preload("res://Assets/Art/UI assets/Holding Needle Hand.png")
@@ -168,6 +170,7 @@ func _on_gui_send_dorm() -> void:
 	else:
 		score +=1
 		correctGuessCount += 1	
+	scoreboard.text = "Score: " + str(score)
 	sendDorm()
 
 
@@ -178,6 +181,7 @@ func _on_gui_send_quarantine() -> void:
 	else:
 		inCorrectGuessCount += 1
 		score -= 1
+	scoreboard.text = "Score: " + str(score)
 	sendQuarantine()
 
 
