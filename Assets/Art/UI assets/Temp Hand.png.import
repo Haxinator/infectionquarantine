@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4h5jxpbyhjmt"
-path="res://.godot/imported/Temp.png-dd0ac21399944ce2500c9cd1e93c9c83.ctex"
+uid="uid://d32b3o8mpk5jt"
+path="res://.godot/imported/Temp Hand.png-7cc275ca892de63bdaf836cc0459425c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Temp.png"
-dest_files=["res://.godot/imported/Temp.png-dd0ac21399944ce2500c9cd1e93c9c83.ctex"]
+source_file="res://Assets/Art/UI assets/Temp Hand.png"
+dest_files=["res://.godot/imported/Temp Hand.png-7cc275ca892de63bdaf836cc0459425c.ctex"]
 
 [params]
 
