@@ -148,6 +148,7 @@ func _process(_delta: float) -> void:
 		print("Score: " + str(score))
 		print("incorrect guesses: " + str(inCorrectGuessCount))
 		
+		setTool(selectedTool)
 		add_child(patientCpy)
 		
 		#walkInAnimation()
