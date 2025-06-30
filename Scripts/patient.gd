@@ -171,6 +171,9 @@ func confuseName():
 	else:
 		Dialogic.VAR.Patient.name = (fullName[0] + " " +  fullName[1] + " " + fullName[2])
 
+func setDifficulty(diff):
+	difficulty = diff
+
 func confuseDOB():
 	var index = randi_range(0,2)
 	
@@ -380,7 +383,8 @@ func showTemp():
 	label = label.instantiate()
 	label.get_node("Sprite2D/temp").text = str(temp) + " C"
 	label.position = get_viewport_rect().size/2
-	label.position.x += 300
+	label.position.x += 100
+	label.position.y -= 200
 	
 	get_tree().get_root().add_child(label)
 
@@ -403,9 +407,10 @@ func showHeartRate():
 	
 	label = load("res://Scenes/Misc/HeartRateLabel.tscn")
 	label = label.instantiate()
-	label.get_node("Label").text = "BPM: " + str(heartRate)
+	label.get_node("Label").text = str(heartRate)
 	label.position = get_viewport_rect().size/2
-	label.position.x += 300
+	label.position.x += 50
+	label.position.y -= 300
 	
 	get_tree().get_root().add_child(label)
 
