@@ -2,6 +2,16 @@ extends Node2D
 
 signal dialogueStart
 
+#tool equipped
+enum Tools {
+	NONE,
+	STETH,
+	THERM,
+	NEEDLE
+}
+
+var tool = Tools.NONE
+
 #Patient Info
 var firstName: String = ""
 var midName: String = ""
@@ -378,7 +388,17 @@ func removeID():
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	#if mouse button pressed
 	if event is InputEventMouseButton and event.pressed:
-		runDiagolue("Patient1")
+		if tool == Tools.NONE:
+			runDiagolue("Patient1")
+		if tool == Tools.STETH:
+			showHeartRate()
+		if tool == Tools.NEEDLE:
+			showBlood()
+		if tool == Tools.THERM:
+			showTemp()
+
+func setTool(newTool):
+	tool = newTool
 
 func runDiagolue(dialogue: String):
 	dialogueStart.emit()

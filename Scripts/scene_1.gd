@@ -11,6 +11,13 @@ var isSick = false
 var inCorrectGuessCount = 0
 var correctGuessCount = 0
 var score = 0
+enum Tools {
+	NONE,
+	STETH,
+	THERM,
+	NEEDLE
+}
+var selectedTool = Tools.NONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +31,7 @@ func _ready() -> void:
 	add_child(nurseCpy)
 	runDiagolue("NurseIntro")
 	infront = nurseCpy
+	setTool(selectedTool)
 
 func walkLeftAnimation():
 	#dynamic walking animation using tweens
@@ -46,6 +54,16 @@ func walkLeftAnimation():
 		bob.tween_property(infront, "position:y", finalpos.y-8, 0.2)
 		bob.tween_property(infront, "position:y", finalpos.y+8, 0.2)
 
+'''
+func walkInAnimation():
+	var walk = create_tween()
+	
+	infront.position = 1.6*get_viewport_rect().size/4
+	infront.position.y += 100
+	
+	var endPos = get_viewport_rect().size/2
+	#walk.tween_property(infront, "position", endPos, 0.2)
+'''
 func walkRightAnimation():
 	#dynamic walking animation using tweens
 		var move = create_tween()
@@ -101,8 +119,9 @@ func _process(_delta: float) -> void:
 		seeingPatient = true
 		var patientCpy = patient.instantiate()
 		infront = patientCpy
-		patientCpy.visible = true
+		#patientCpy.visible = true
 		patientCpy.position = get_viewport_rect().size/2
+		
 		#patientCpy.position.y -= 80
 		#patientCpy.get_node("AnimationPlayer").play("WalkIn")
 		
@@ -119,6 +138,9 @@ func _process(_delta: float) -> void:
 		print("incorrect guesses: " + str(inCorrectGuessCount))
 		
 		add_child(patientCpy)
+		
+		#walkInAnimation()
+		
 		patientCpy.showID()
 
 func runDiagolue(dialogue: String):
@@ -144,3 +166,34 @@ func _on_gui_send_quarantine() -> void:
 		inCorrectGuessCount += 1
 		score -= 1
 	sendQuarantine()
+
+
+func _on_gui_needle_select() -> void:
+	if selectedTool == Tools.NEEDLE:
+		setTool(Tools.NONE)
+		get_node("GUI/Clickable Areas/ItemList").deselect_all()
+	else:
+		setTool(Tools.NEEDLE)
+	print(str(selectedTool))
+
+
+func _on_gui_stethoscope_select() -> void:
+	if selectedTool == Tools.STETH:
+		setTool(Tools.NONE)
+		get_node("GUI/Clickable Areas/ItemList").deselect_all()
+	else:
+		setTool(Tools.STETH)
+	print(str(selectedTool))
+
+
+func _on_gui_thermometer_select() -> void:
+	if selectedTool == Tools.THERM:
+		setTool(Tools.NONE)
+		get_node("GUI/Clickable Areas/ItemList").deselect_all()
+	else:
+		setTool(Tools.THERM)
+	print(str(selectedTool))
+
+func setTool(tool):
+	selectedTool = tool
+	infront.setTool(tool)

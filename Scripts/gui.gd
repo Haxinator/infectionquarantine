@@ -4,6 +4,9 @@ extends Control
 
 signal sendQuarantine
 signal sendDorm
+signal thermometerSelect
+signal stethoscopeSelect
+signal needleSelect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,3 +51,15 @@ func _on_healthy_ui_pressed() -> void:
 func _on_quarantine_ui_pressed() -> void:
 	sendQuarantine.emit()
 	print("TEST: Send Right")
+
+
+func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	if index == 0:
+		#therm
+		thermometerSelect.emit()
+	if index == 1:
+		#Needle
+		needleSelect.emit()
+	if index == 2:
+		#steth
+		stethoscopeSelect.emit()
