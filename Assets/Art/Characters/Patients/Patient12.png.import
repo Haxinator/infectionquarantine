@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0rqgi0cuv5w"
-path="res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"
+uid="uid://c31v1wu15o4og"
+path="res://.godot/imported/Patient12.png-97b928d7c2bb02a61d0a60a63709c183.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/UI assets/Hand Cursor.png"
-dest_files=["res://.godot/imported/Hand Cursor.png-f08add91cf5a082c812478362af1ec32.ctex"]
+source_file="res://Assets/Art/Characters/Patients/Patient12.png"
+dest_files=["res://.godot/imported/Patient12.png-97b928d7c2bb02a61d0a60a63709c183.ctex"]
 
 [params]
 

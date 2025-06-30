@@ -26,7 +26,7 @@ var anxiety = -1
 var variant = -1
 
 #Portraits
-const TOTAL_HEALTHY = 11
+const TOTAL_HEALTHY = 15
 const TOTAL_SICK = 1
 
 #Dialogue
