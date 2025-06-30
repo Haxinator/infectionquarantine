@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bglfadad4gylo"]
 
 [ext_resource type="Script" uid="uid://dvgcsfg5iw1s3" path="res://Scripts/nurse.gd" id="1_parov"]
-[ext_resource type="Texture2D" uid="uid://dr5eysl2jm15e" path="res://Assets/Art/Nurse.PNG" id="2_wdx58"]
+[ext_resource type="Texture2D" uid="uid://dr5eysl2jm15e" path="res://Assets/Art/Characters/Placeholders/Nurse.PNG" id="2_parov"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apa5u"]
 radius = 113.0
@@ -16,7 +16,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wdx58")
+texture = ExtResource("2_parov")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_apa5u")
