@@ -10,7 +10,15 @@ enum Tools {
 	NEEDLE
 }
 
+#difficulty
+enum Diff {
+	EASY,
+	MED,
+	HARD
+}
+
 var tool = Tools.NONE
+var difficulty = Diff.HARD
 
 #Patient Info
 var firstName: String = ""
@@ -61,10 +69,21 @@ var otherIllness = false
 func _ready() -> void:
 	#DOB = getDOB()
 	#patientName = getName()
-	aggression = randi_range(0,2)
-	anxiety = randi_range(0,2)
-	variant = randi_range(0,2)
-	disorder = true if randi() % 100 < 30 else false
+	var upper = 0
+	
+	if difficulty == Diff.MED:
+		upper = 1
+	if difficulty == Diff.HARD:
+		upper = 2
+	
+	aggression = randi_range(0,upper)
+	anxiety = randi_range(0,upper)
+	variant = randi_range(0,upper)
+	
+	if randi() % 100 < 30 and difficulty != Diff.EASY:
+		disorder = true
+	else:
+		disorder = false
 	
 	# Sets the sprite for the character portrait on _ready
 	patient = "Patient" + str(randi_range(1, TOTAL_HEALTHY))
@@ -336,7 +355,7 @@ func showTemp():
 	
 	label = load("res://Scenes/Misc/TemperatureLabel.tscn")
 	label = label.instantiate()
-	label.get_node("Label").text = "temp: " + str(temp)
+	label.get_node("Sprite2D/temp").text = str(temp) + " C"
 	label.position = get_viewport_rect().size/2
 	label.position.x += 300
 	
