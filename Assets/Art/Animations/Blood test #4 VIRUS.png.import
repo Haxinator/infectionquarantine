@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0rqgi0cuv5w"
-path="res://.godot/imported/Hand cursor.png-55b3c8ecd001ddb0c974574f17984b3d.ctex"
+uid="uid://4j6qdkp3cytq"
+path="res://.godot/imported/Blood test #4 VIRUS.png-4088e00196bd680dce20f6b370d1557b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/UI assets/Hand cursor.png"
-dest_files=["res://.godot/imported/Hand cursor.png-55b3c8ecd001ddb0c974574f17984b3d.ctex"]
+source_file="res://Assets/Art/Animations/Blood test #4 VIRUS.png"
+dest_files=["res://.godot/imported/Blood test #4 VIRUS.png-4088e00196bd680dce20f6b370d1557b.ctex"]
 
 [params]
 

@@ -8,6 +8,7 @@ const emptyNeedle = preload("res://Assets/Art/UI assets/Holding Needle Hand.png"
 const fullNeedle = preload("res://Assets/Art/UI assets/Holding Needle Hand (with liquid).png")
 const hand = preload("res://Assets/Art/UI assets/Hand cursor.png")
 const tempHand = preload("res://Assets/Art/UI assets/Temp Hand.png")
+const stethoscopeHand = preload("res://Assets/Art/UI assets/Stethoscope Hand.png")
 
 var seeingPatient = true
 var infront = null
@@ -120,6 +121,9 @@ func DialogicSignal(arg: String):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	#hide any popups
+	if Input.is_action_just_pressed("left_mouse"):
+		get_node("GUI/Control2").visible = false
 	if not seeingPatient:
 		seeingPatient = true
 		var patientCpy = patient.instantiate()
@@ -195,6 +199,7 @@ func _on_gui_stethoscope_select() -> void:
 		Input.set_custom_mouse_cursor(hand)
 	else:
 		setTool(Tools.STETH)
+		Input.set_custom_mouse_cursor(stethoscopeHand)
 	print(str(selectedTool))
 
 
@@ -216,4 +221,12 @@ func setTool(tool):
 func _on_gui_show_blood() -> void:
 	setTool(Tools.NEEDLE)
 	Input.set_custom_mouse_cursor(emptyNeedle)
-	infront.showBlood()
+	var GUI = get_node("GUI/Control2")
+	var anim = GUI.get_node("AnimatedSprite2D")
+	if infront.getBlood():
+		anim.animation = "sick"
+	else:
+		anim.animation = "healthy"
+	GUI.visible = true
+	anim.play()
+	GUI.get_node("Timer").start()

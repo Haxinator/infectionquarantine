@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0rqgi0cuv5w"
-path="res://.godot/imported/Hand cursor.png-55b3c8ecd001ddb0c974574f17984b3d.ctex"
+uid="uid://c1jp4080sgyrn"
+path="res://.godot/imported/RIGHT frame#3.png-23f8dbd87bf9b0ea41ca5d0358c3ad72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/UI assets/Hand cursor.png"
-dest_files=["res://.godot/imported/Hand cursor.png-55b3c8ecd001ddb0c974574f17984b3d.ctex"]
+source_file="res://Assets/Art/Animations/RIGHT frame#3.png"
+dest_files=["res://.godot/imported/RIGHT frame#3.png-23f8dbd87bf9b0ea41ca5d0358c3ad72.ctex"]
 
 [params]
 

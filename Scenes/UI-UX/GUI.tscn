@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dphb3n2u8gxk8"]
+[gd_scene load_steps=27 format=3 uid="uid://dphb3n2u8gxk8"]
 
 [ext_resource type="Script" uid="uid://hcldmt5777ki" path="res://Scripts/gui.gd" id="1_b1cy7"]
 [ext_resource type="Texture2D" uid="uid://dgk0k18d8wob6" path="res://Assets/Art/UI assets/Symptom UI.png" id="2_atngs"]
@@ -18,9 +18,60 @@
 [ext_resource type="Texture2D" uid="uid://c3fvvfr8aah2e" path="res://Assets/Art/UI assets/Thermometer.png" id="14_w5mkn"]
 [ext_resource type="Texture2D" uid="uid://cygk1dmkbdjeh" path="res://Assets/Art/UI assets/Stethoscope.png" id="15_ap4e0"]
 [ext_resource type="Texture2D" uid="uid://cwks2jexy8snn" path="res://Assets/Art/UI assets/Needle.png" id="16_mkrna"]
+[ext_resource type="Script" uid="uid://b3q4urchmv264" path="res://Scenes/UI-UX/control_2.gd" id="20_kie62"]
+[ext_resource type="Texture2D" uid="uid://c6un373a4pov5" path="res://Assets/Art/Animations/Blood test #1.png" id="21_dsuvt"]
+[ext_resource type="Texture2D" uid="uid://dmqvfj6udog28" path="res://Assets/Art/Animations/Blood test #2.png" id="22_coj6r"]
+[ext_resource type="Texture2D" uid="uid://bc0p7fojgbo5f" path="res://Assets/Art/Animations/Blood test #3.png" id="23_ajibm"]
+[ext_resource type="Texture2D" uid="uid://bhjquilw2exia" path="res://Assets/Art/Animations/Blood test #4 HEALTHY.png" id="24_xgtq0"]
+[ext_resource type="Texture2D" uid="uid://4j6qdkp3cytq" path="res://Assets/Art/Animations/Blood test #4 VIRUS.png" id="25_gwh54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atngs"]
 size = Vector2(976, 712)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gnqk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5arer")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_dsuvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_coj6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ajibm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_xgtq0")
+}],
+"loop": false,
+"name": &"healthy",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_dsuvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_coj6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ajibm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_gwh54")
+}],
+"loop": false,
+"name": &"sick",
+"speed": 2.0
+}]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -54,6 +105,16 @@ scale = Vector2(0.599999, 0.52)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Folder Pop Up/Area2D"]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_atngs")
+
+[node name="ColorRect" type="ColorRect" parent="Folder Pop Up"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.556863)
 
 [node name="Background2" type="Control" parent="."]
 layout_mode = 1
@@ -294,6 +355,35 @@ offset_right = -152.0
 grow_horizontal = 1
 scale = Vector2(6.28, 1)
 
+[node name="Control2" type="Control" parent="."]
+visible = false
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_kie62")
+
+[node name="ColorRect" type="ColorRect" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.556863)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control2"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8gnqk")
+animation = &"sick"
+
+[node name="Timer" type="Timer" parent="Control2"]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="pressed" from="Clickable Areas/Computer" to="." method="_on_computer_pressed"]
 [connection signal="toggled" from="Clickable Areas/Symptoms File" to="." method="_on_symptoms_folder_toggled"]
 [connection signal="pressed" from="Clickable Areas/Healthy UI" to="." method="_on_healthy_ui_pressed"]
@@ -302,3 +392,4 @@ scale = Vector2(6.28, 1)
 [connection signal="pressed" from="Clickable Areas/Stethoscope" to="." method="_on_stethoscope_pressed"]
 [connection signal="pressed" from="Clickable Areas/Syringe" to="." method="_on_syringe_pressed"]
 [connection signal="item_clicked" from="Clickable Areas/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="timeout" from="Control2/Timer" to="Control2" method="_on_timer_timeout"]

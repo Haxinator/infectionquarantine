@@ -20,6 +20,10 @@ func _ready() -> void:
 	
 	get_node("Computer").position.x = 2.15*screenPos.x
 	get_node("Computer").position.y = 3.8*screenPos.y/8
+	
+	#get_node("ComputerAnimated").position.x = 2.5*screenPos.x
+	#get_node("ComputerAnimated").position.y = 5.5*screenPos.y/8
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

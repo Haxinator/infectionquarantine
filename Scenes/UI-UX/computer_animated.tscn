@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdc8r7py8vw7o"]
+
+[ext_resource type="Texture2D" uid="uid://b0b4f70prba5m" path="res://Assets/Art/Infection Assets/Computer.png" id="1_06i3a"]
+[ext_resource type="Script" uid="uid://bekiigf1v42kp" path="res://Scenes/UI-UX/computer_animated.gd" id="1_ncahb"]
+[ext_resource type="Texture2D" uid="uid://c6un373a4pov5" path="res://Assets/Art/Animations/Blood test #1.png" id="2_ncahb"]
+[ext_resource type="Texture2D" uid="uid://dmqvfj6udog28" path="res://Assets/Art/Animations/Blood test #2.png" id="3_f2nyx"]
+[ext_resource type="Texture2D" uid="uid://bc0p7fojgbo5f" path="res://Assets/Art/Animations/Blood test #3.png" id="4_qs3ti"]
+[ext_resource type="Texture2D" uid="uid://bhjquilw2exia" path="res://Assets/Art/Animations/Blood test #4 HEALTHY.png" id="5_nfksk"]
+[ext_resource type="Texture2D" uid="uid://4j6qdkp3cytq" path="res://Assets/Art/Animations/Blood test #4 VIRUS.png" id="6_xukp6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_516m4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_06i3a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ncahb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2nyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qs3ti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nfksk")
+}],
+"loop": true,
+"name": &"healthy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ncahb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2nyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qs3ti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xukp6")
+}],
+"loop": true,
+"name": &"sick",
+"speed": 5.0
+}]
+
+[node name="ComputerAnimated" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_ncahb")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -267.0
+offset_top = -254.0
+offset_right = -259.0
+offset_bottom = -246.0
+scale = Vector2(62.6, 41.04)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_516m4")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

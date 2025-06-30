@@ -98,6 +98,23 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func preparePatient():
+	var upper = 0
+	
+	if difficulty == Diff.MED:
+		upper = 1
+	if difficulty == Diff.HARD:
+		upper = 2
+	
+	aggression = randi_range(0,upper)
+	anxiety = randi_range(0,upper)
+	variant = randi_range(0,upper)
+	
+	if randi() % 100 < 30 and difficulty != Diff.EASY:
+		disorder = true
+	else:
+		disorder = false
+
 func setDialogicVars():
 	#set name and DOB in dialogic
 	#Dialogic.VAR.Patient.dob = DOB
@@ -233,11 +250,13 @@ func setHealthy():
 	Dialogic.VAR.Patient.name = patientName
 	DOB = getDOB()
 	Dialogic.VAR.Patient.dob = DOB
+	
+	preparePatient()
 	sick = false
 	bloodContaminated = false
 	heartRate = randi_range(60, 100)
 	temp = randf_range(36, 37.9)
-	otherIllness = true if randi_range(0,1) == 1 else false
+	otherIllness = true if (randi_range(0,1) == 1) and difficulty != Diff.EASY else false
 	
 	#increase heart rate if angry or anxious
 	if anxiety == 2 or aggression == 2:
@@ -314,9 +333,11 @@ func setSick():
 	Dialogic.VAR.Patient.name = patientName
 	DOB = getDOB()
 	Dialogic.VAR.Patient.dob = DOB
+	preparePatient()
 	sick = true
 	heartRate = randi_range(60, 140)
 	temp = snapped(randf_range(36, 40),0.01)
+	
 	#50% of false negative
 	bloodContaminated = true if randi()%2 == 1 else false 
 	confused = true if randi()%2 == 1 else false 
@@ -373,6 +394,9 @@ func showBlood():
 	label.position.x += 300
 	
 	get_tree().get_root().add_child(label)
+
+func getBlood():
+	return bloodContaminated
 
 func showHeartRate():
 	removeLabel()

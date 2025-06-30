@@ -69,3 +69,14 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 	if index == 2:
 		#steth
 		stethoscopeSelect.emit()
+
+
+func _on_computer_animated_pressed() -> void:
+	if needleIsFull:
+		showBlood.emit()
+		needleIsFull = false
+	print("TEST: Computer Pressed")
+	get_node("Clickable Areas/ComputerAnimated/AnimatedSprite2D").animation = "healthy"
+	get_node("Clickable Areas/ComputerAnimated/AnimatedSprite2D").play()
+	get_node("Clickable Areas/ComputerAnimated").position.x -= 150
+	get_node("Clickable Areas/ComputerAnimated").scale = Vector2(0.4,0.4)
